@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react'
 import axios from 'axios';
 
 
+
+
 const NuevaPersona = () => {
 
     const [ datos, guardarDatos ] = useState({
@@ -10,6 +12,8 @@ const NuevaPersona = () => {
         alias:"",
         email:""
     });
+
+   
    
     //Extraer los valores
     const { nombre, apellido, alias, email } = datos;
@@ -29,6 +33,7 @@ const NuevaPersona = () => {
     //Cuando el usuario presiona guardar
     const handleSubmit = e =>{
        e.preventDefault();
+       console.log("enviando form");
 
                  
        //Validar
@@ -42,7 +47,8 @@ const NuevaPersona = () => {
        //subir a la base de datos
        async function connect() {
            try {
-            await axios.post('http://localhost:4000/persona', {datos} );
+               
+            await axios.post('http://localhost:4000/persona', datos );
            } 
            catch (e) {
                console.log(e.message);
@@ -58,7 +64,7 @@ const NuevaPersona = () => {
         alias:"",
         email:""
        })
-
+        
     }
     return ( 
         <Fragment>
