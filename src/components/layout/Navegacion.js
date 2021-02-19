@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import NuevaPersona from '../personas/NuevaPersona'
 
 const Navegacion = () => {
     return (
@@ -6,7 +8,7 @@ const Navegacion = () => {
             <div className="dropdown">
                 <button className="dropbtn">Personas</button>
                 <div className="dropdown-content">
-                    <a href="#!">Nueva Persona</a>
+                    <Link to={"/nueva-persona"}>Nueva Persona</Link>
                     <a href="#!">Listado Personas</a>
                 </div>
             </div>
