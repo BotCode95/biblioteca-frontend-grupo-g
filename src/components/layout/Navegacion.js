@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Navegacion = () => {
     return (
@@ -13,8 +14,8 @@ const Navegacion = () => {
             <div className="dropdown">
                 <button className="dropbtn">Categoria</button>
                 <div className="dropdown-content">
-                    <a href="#!">Nueva Categoria</a>
-                    <a href="#!">Listado Categoria</a>
+                    <Link to={"/nueva-categoria"}>Nueva Categoria</Link>
+                    <Link to={"/listado-categoria"}>Listado Categoria</Link>
                 </div>
             </div>
             <div className="dropdown">
