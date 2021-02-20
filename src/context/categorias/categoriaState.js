@@ -1,13 +1,22 @@
 import React, {useReducer} from 'react'
 import categoriaContext from './categoriaContext'
 import categoriaReducer from './categoriaReducer'
-import {AGREGAR_CATEGORIA, OBTENER_CATEGORIAS, CATEGORIA_ACTUAL} from '../../types';
+import {
+    AGREGAR_CATEGORIA, 
+    OBTENER_CATEGORIAS, 
+    CATEGORIA_ACTUAL, 
+    ELIMINAR_CATEGORIA,
+    ERROR_CATEGORIA,
+    ACTUALIZAR_CATEGORIA
+} from '../../types';
 import clienteAxios from '../../config/axios';
 
 const CategoriaState = (props) => {
     const initialState = {
         categorias : [],
-        categoria: null
+        categoria: null,
+        mensaje: null
+        // categoriaseleccionada: null
     }
     const [state, dispatch] = useReducer(categoriaReducer, initialState);
 
@@ -44,14 +53,46 @@ const CategoriaState = (props) => {
         })
     }
 
+    const eliminarCategoria = async (categoriaId) => {
+        try {
+            const contenido = await clienteAxios.delete(`/categoria/${categoriaId}`);
+            console.log(contenido)
+            dispatch({
+                type: ELIMINAR_CATEGORIA,
+                payload: categoriaId
+            })
+        } catch (error) {
+            console.log(error);
+            dispatch({
+                type: ERROR_CATEGORIA,
+                payload: error.response.data.Error
+            })
+        }
+    }
+
+    const actualizarCategoria = async categoria => {
+        try {
+            const contenido = await clienteAxios.put(`/categoria/${categoria.id}`, categoria);
+            console.log(contenido);
+            dispatch({
+                type: ACTUALIZAR_CATEGORIA,
+                payload: contenido.data.categoria
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (  
         <categoriaContext.Provider
             value={{
                 categorias: state.categorias,
                 categoria: state.categoria,
+                // categoriaseleccionada : state.categoriaseleccionada,
                 agregarCategoria,
                 obtenerCategorias,
-                categoriaActual
+                categoriaActual,
+                eliminarCategoria
             }}
         >
             {props.children}

@@ -6,13 +6,20 @@ import categoriaContext from '../../context/categorias/categoriaContext'
 
 const ListadoCategoria = () => {
     const categoriasContext = useContext(categoriaContext);
-    const {categorias, obtenerCategorias} = categoriasContext;
+    const {categoria,categorias, obtenerCategorias} = categoriasContext;
     // parar el effect
     useEffect(() => {
-        obtenerCategorias();
-    })
+        if(categoria == null){
+            obtenerCategorias();
+        }
+        // eslint-disable-next
+    },[categoria])
 
-    // if(categorias.length === 0) return <p>No hay categorias, podes crear una</p>
+    if(categorias.length === 0) return (
+        <p
+            className="msj-no-categorias"
+        >No hay categorias, podes crear una</p>
+    )
     return (
         <>
         <Layout/>
@@ -21,13 +28,13 @@ const ListadoCategoria = () => {
             <ul className="listado">
                 {categorias.map(categoria => (
                     <Categoria
+                        key={categoria.id}
                         categoria = {categoria}
                     />
                 ))}
             </ul>
         </div>
         </>
-        
     )
 }
 

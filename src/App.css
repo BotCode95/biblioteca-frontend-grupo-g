@@ -231,3 +231,15 @@ nav {
   margin-right: 1rem;
   border-radius: 1rem;
 }
+
+.msj-no-categorias{
+  min-height: 70vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--color-nav); */
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+}

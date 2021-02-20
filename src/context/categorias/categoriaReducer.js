@@ -1,4 +1,10 @@
-import {OBTENER_CATEGORIAS, CATEGORIA_ACTUAL, AGREGAR_CATEGORIA} from '../../types'
+import {
+    OBTENER_CATEGORIAS, 
+    CATEGORIA_ACTUAL,
+    AGREGAR_CATEGORIA,
+    ELIMINAR_CATEGORIA,
+    ERROR_CATEGORIA,
+} from '../../types'
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state,action) => {
     switch(action.type) {
@@ -16,6 +22,17 @@ export default (state,action) => {
             return {
                 ...state,
                 categoria : state.categorias.filter(categoria => categoria.id === action.payload)
+            }
+        case ELIMINAR_CATEGORIA :
+            return {
+                ...state,
+                categorias: state.categorias.filter(categoria => categoria.id !== action.payload),
+                categoria: null, //reinicio
+            }
+        case ERROR_CATEGORIA:
+            return {
+                ...state,
+                mensaje: action.payload
             }
         default: 
            return state;
