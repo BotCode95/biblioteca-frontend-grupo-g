@@ -1,3 +1,4 @@
+
 :root {
   --main-color: #F2C230;
   --gris1: #edf2f6;
@@ -177,13 +178,15 @@ nav {
 }
 
 .listado-container{
-  width: 600px;
+  width: 75%;
   margin: 0 auto;
 }
 
 .listado {
   display: flex;
   flex-direction: column;
+  justify-items: flex-start;
+  align-items: flex-start;
 }
 .boton-categoria {
   font-weight: var(--headingFont);
@@ -230,4 +233,15 @@ nav {
   background-color: var(--secondary);
   margin-right: 1rem;
   border-radius: 1rem;
+}
+.tabla-persona th{
+  text-align: left;
+  padding-bottom: 10px;
+  padding-inline: 30px;
+  
+}
+.tabla-persona td{
+  text-align: left;
+  padding: 0 30px;
+  
 }
