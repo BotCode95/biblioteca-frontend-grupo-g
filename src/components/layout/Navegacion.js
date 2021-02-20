@@ -7,8 +7,8 @@ const Navegacion = () => {
             <div className="dropdown">
                 <button className="dropbtn">Personas</button>
                 <div className="dropdown-content">
-                    <a href="#!">Nueva Persona</a>
-                    <a href="#!">Listado Personas</a>
+                    <Link to={"/nueva-persona"}>Nueva Persona</Link>
+                    <Link to={"/listado-persona"}>Listado Personas</Link>
                 </div>
             </div>
             <div className="dropdown">

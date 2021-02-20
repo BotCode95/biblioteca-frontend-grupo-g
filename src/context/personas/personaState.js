@@ -1,5 +1,4 @@
 import React, {useReducer} from 'react'
-
 import personaContext from './personaContext'
 import personaReducer from './personaReducer'
 import {AGREGAR_PERSONA, OBTENER_PERSONAS, PERSONA_ACTUAL} from '../../types'
@@ -30,11 +29,11 @@ const PersonaState = (props) => {
     const obtenerPersonas = async () => {
         try {
             const contenido = await clienteAxios.get('/persona');
+            console.log(contenido);
             dispatch({
                 type: OBTENER_PERSONAS,
-                payload: contenido.data.respuesta
+                payload: contenido.data.Respuesta
             })
-            
         } catch (error) {
             console.log(error);
         }

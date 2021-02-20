@@ -18,7 +18,6 @@ export default (state,action) => {
                 persona: state.personas.filter(persona => persona.id === action.payload)
             }
         default: 
-            return state;
-           
+            return state;  
     }
 }
