@@ -243,3 +243,23 @@ nav {
   text-align: center;
   text-transform: uppercase;
 }
+
+.tabla-persona th{
+  text-align: left;
+  padding-bottom: 10px;
+  padding-inline: 30px;
+ 
+
+}
+.tabla-persona td{
+  text-align: left;
+  padding: 0 30px;  
+}
+
+.alerta-error{
+  background-color: red;
+}
+
+.alerta-ok {
+  background-color: green;
+}

@@ -29,9 +29,17 @@ const CategoriaState = (props) => {
                 type: AGREGAR_CATEGORIA,
                 payload: categoria
             })
-            // console.log(contenido);
+           
         } catch (error) {
             console.log(error);
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'categoria-error'
+            }
+            dispatch({
+                type: ERROR_CATEGORIA,
+                payload: alerta
+            })
         }
     }
     const obtenerCategorias = async () => {
@@ -88,11 +96,12 @@ const CategoriaState = (props) => {
             value={{
                 categorias: state.categorias,
                 categoria: state.categoria,
-                // categoriaseleccionada : state.categoriaseleccionada,
+                mensaje: state.mensaje,
                 agregarCategoria,
                 obtenerCategorias,
                 categoriaActual,
-                eliminarCategoria
+                eliminarCategoria,
+                actualizarCategoria
             }}
         >
             {props.children}

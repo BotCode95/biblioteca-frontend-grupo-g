@@ -1,18 +1,28 @@
-import React,{useState, useContext} from 'react';
+import React,{useState, useContext, useEffect} from 'react';
 import imagen from '../../question1.svg';
 import Layout from '../../components/layout/Layout'
 import categoriaContext from '../../context/categorias/categoriaContext'
+import alertaContext from '../../context/alertas/alertaContext'
 
 const NuevaCategoria = () => {
 
     const categoriasContext = useContext(categoriaContext);
-    const {agregarCategoria} = categoriasContext;
+    const {mensaje, agregarCategoria} = categoriasContext;
+
+    const alertas = useContext(alertaContext);
+    const {alerta, mostrarAlerta} = alertas; 
 
      const [categoria, setCategoria] = useState({
         nombre: ''
     });
 
     const {nombre} = categoria;
+
+    useEffect(() => {
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
+    }, [mensaje])
 
     const onChange = e => {
         setCategoria({
@@ -35,6 +45,7 @@ const NuevaCategoria = () => {
     return (
         <>
         <Layout/>
+
         <div className="container">
             <div className="contenedor-form">
                 <h1>Nueva Categoría</h1>
@@ -70,6 +81,7 @@ const NuevaCategoria = () => {
                     />
             </div>
         </div>
+        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
         
         </>
     )
