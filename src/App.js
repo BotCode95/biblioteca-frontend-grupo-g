@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import PersonaState  from './context/personas/personaState';
 import CategoriaState from './context/categorias/categoriaState';
+import AlertaState from './context/alertas/alertaState';
 import Layout from './components/layout/Layout';
 import NuevaCategoria from './components/categorias/NuevaCategoria'
 import NuevaPersona from './components/personas/NuevaPersona'
@@ -14,6 +15,7 @@ function App() {
   return (
     <PersonaState>
       <CategoriaState>
+      <AlertaState>
         <Router>
           <Switch>
             <Route exact path="/" component= {Layout} />
@@ -23,6 +25,7 @@ function App() {
             <Route exact path="/listado-persona" component={ListadoPersona}/>
           </Switch>
         </Router>
+        </AlertaState>
       </CategoriaState>
     </PersonaState>
   );

@@ -1,4 +1,5 @@
-import {OBTENER_PERSONAS, PERSONA_ACTUAL, AGREGAR_PERSONA} from '../../types';
+import {OBTENER_PERSONAS, PERSONA_ACTUAL, 
+    AGREGAR_PERSONA, ELIMINAR_PERSONA, ERROR_PERSONA} from '../../types';
 
 export default (state,action) => {
     switch(action.type){
@@ -16,6 +17,17 @@ export default (state,action) => {
             return {
                 ...state,
                 persona: state.personas.filter(persona => persona.id === action.payload)
+            }
+        case ELIMINAR_PERSONA :
+            return {
+                ...state,
+                personas: state.personas.filter(persona => persona.id !== action.payload),
+                persona: null, //reinicio
+            }
+        case ERROR_PERSONA:
+            return {
+                ...state,
+                mensaje: action.payload
             }
         default: 
             return state;  
