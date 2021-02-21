@@ -12,6 +12,11 @@ export const PERSONA_ACTUAL = "PERSONA_ACTUAL";
 export const ELIMINAR_PERSONA = 'ELIMINAR_PERSONA';
 export const ERROR_PERSONA = 'ERROR_PERSONA';
 
+//Libros
+export const OBTENER_LIBROS = 'OBTENER_LIBROS';
+export const AGREGAR_LIBRO = 'AGREGAR_LIBRO';
+export const LIBRO_ACTUAL = 'LIRO_ACTUAL';
+export const ELIMINAR_LIBRO = 'ELIMINAR_LIBRO';
 
 //Alertas
 export const MOSTRAR_ALERTA = 'MOSTRAR_ALERTA';
