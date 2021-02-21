@@ -18,11 +18,11 @@ const Navegacion = () => {
                     <Link to={"/listado-categoria"}>Listado Categoria</Link>
                 </div>
             </div>
-            <div className="dropdown">
+             <div className="dropdown">
                 <button className="dropbtn">Libro</button>
                 <div className="dropdown-content">
-                    <a href="#!">Nuevo Libro</a>
-                    <a href="#!">Listado Libro</a>
+                    <Link to={"/nuevo-libro"}>Nuevo Libro</Link>
+                    <Link to={"/listado-libro"}>Listado Libro</Link>
                 </div>
             </div>
         </nav>
