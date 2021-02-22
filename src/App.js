@@ -27,7 +27,7 @@ function App() {
                 <Route exact path="/" component= {Layout} />
                 <Route exact path="/nueva-categoria" component={NuevaCategoria}/>
                 <Route exact path="/nueva-persona" component={NuevaPersona}/>
-                <Route exact path="/editar-persona" component={EditarPersona}/>
+                <Route exact path="/persona/:id" component={EditarPersona}/>
                 <Route exact path="/nuevo-libro" component={NuevoLibro}/>
                 <Route exact path="/listado-categoria" component={ListadoCategoria}/>
                 <Route exact path="/listado-persona" component={ListadoPersona}/>

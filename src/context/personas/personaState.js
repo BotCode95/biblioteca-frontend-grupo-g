@@ -77,7 +77,7 @@ const PersonaState = (props) => {
             console.log(contenido);
             dispatch({
                 type: ACTUALIZAR_PERSONA,
-                payload: contenido.data.persona
+                payload: persona
             })
         } catch (error) {
             console.log(error);

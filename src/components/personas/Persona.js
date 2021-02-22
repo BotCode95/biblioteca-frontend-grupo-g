@@ -1,13 +1,12 @@
 import React, {Fragment, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import personaContext from '../../context/personas/personaContext';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-// import EditIcon from '@material-ui/icons/Edit';
 
 const Persona = ({persona}) => {
-   
+    const history = useHistory();
     const personasContext = useContext(personaContext)
     const {personaActual, eliminarPersona} = personasContext;
 
@@ -15,6 +14,8 @@ const Persona = ({persona}) => {
         console.log(persona);
         
         personaActual(persona);
+        history.push(`/persona/${persona.id}`)
+        // history.push('/editar-persona')
     }
     const personaEliminar = id => {
         eliminarPersona(id);
@@ -30,7 +31,7 @@ const Persona = ({persona}) => {
                         <td> {persona.email} </td>
                         <td>
                             <IconButton aria-label="edit" color="primary">
-                                <Link to={'editar-persona'}> <EditIcon onClick={() => seleccionarPersona(persona)}/></Link>
+                             <EditIcon onClick={() => seleccionarPersona(persona)}/>
                             </IconButton>
                         </td>
                         <td>

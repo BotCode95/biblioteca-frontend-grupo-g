@@ -8,7 +8,6 @@ const EditarPersona = () => {
     const personasContext = useContext(personaContext);
     const {personas, actualizarPersona, personaSeleccionada, personaSinDatos} = personasContext;
 
-    // const[personaActual] = persona;
     const [persona, setPersonas ] = useState({
         nombre:"",
         apellido:"",
@@ -22,19 +21,6 @@ const EditarPersona = () => {
         setPersonas(personaeditar);
         
     },[personaeditar]);
-    
-    //     useEffect(() => {
-        //     if(personaSeleccionada !== null){
-            //         setPersonas(personaSeleccionada);
-    //     } else{
-        //         setPersonas({
-    //             nombre: '',
-    //             apellido:"",
-    //             alias:"",
-    //             email:""
-    //         })
-    //     }
-    // },[personaSeleccionada]);
     
     //Funcion que se actualiza cada vez que el usuario escribe algo
     const actualizarState = e =>{
@@ -52,10 +38,10 @@ const EditarPersona = () => {
        e.preventDefault();
        console.log("enviando form");
 
-        if(personaeditar){
+        // if(personaeditar){
             actualizarPersona(persona);
             personaSinDatos();
-        }
+        // }
 
         history.push('/');
     }
