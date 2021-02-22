@@ -7,11 +7,12 @@ const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
     const {libros, obtenerLibros} = librosContext;
-console.log(libros);
+
+    
+
     useEffect(() => {
-        
         obtenerLibros();
-    })
+    },[])
    
     return(
         <>

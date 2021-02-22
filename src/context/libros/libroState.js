@@ -8,7 +8,8 @@ const LibroState = (props) => {
     const initialState = {
         libros : [],
         libro: null,
-        mensaje: null
+        mensaje: null,
+        personaActual: null
     }
     const [state, dispatch] = useReducer(libroReducer, initialState);
 
@@ -114,6 +115,16 @@ const LibroState = (props) => {
             })
         }
     }
+
+    // const obtenerLibroPersona = async personaId => {
+    //     try {
+    //         const contenido = await clienteAxios.get('/libro', {params: personaId})
+    //         console.log(contenido)
+
+    //     } catch (error) {
+            
+    //     }
+    // }
     return (  
         <libroContext.Provider
             value={{

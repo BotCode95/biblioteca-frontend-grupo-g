@@ -17,12 +17,13 @@ import alertaContext from '../../context/alertas/alertaContext'
         nombre: ''
     });
 
+
     const {nombre} = categoria;
 
     useEffect(() => {
         if(mensaje){
             mostrarAlerta(mensaje.mensaje, mensaje.tipo)
-        }
+        } 
     }, [mensaje])
 
     const onChange = e => {
@@ -33,22 +34,13 @@ import alertaContext from '../../context/alertas/alertaContext'
     }
     const submitCategoria = e => {
         e.preventDefault();
-        if(nombre.trim() === ''){
-            console.log('El nombre esta vacio');
-        }
-        console.log('Enviado');
         agregarCategoria(categoria);
-
-        setCategoria({
-            nombre: ''
-        })
 
         history.push('/listado-categoria');
     }
     return (
         <>
         <Layout/>
-
         <div className="container">
             <div className="contenedor-form">
                 <h1>Nueva Categoría</h1>

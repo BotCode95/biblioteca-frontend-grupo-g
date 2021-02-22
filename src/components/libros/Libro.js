@@ -1,6 +1,8 @@
 import React, { Fragment, useContext, useState } from 'react';
 import libroContext from '../../context/libros/libroContext';
 
+import categoriaContext from '../../context/categorias/categoriaContext';
+import personaContext from '../../context/personas/personaContext';
 import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -215,23 +217,28 @@ const Libro = ({libro}) => {
         console.log(id);
     }
 
+    // const categoriasContext = useContext(categoriaContext);
+    // const {categoria}= categoriasContext;
+
+    // const personasContext = useContext(personaContext);
+    // const {persona}= personasContext;
+
+    //mostrar el nombre de la persona que sea tenga el mismo id que el persona_id
+
+
     return (
         <Fragment>
-            
             <tbody >
                     <tr>
                         <td> {libro.nombre} </td>
                         <td> {libro.descripcion} </td>
                         <td> {libro.categoria_id} </td>
                         <td> {libro.persona_id} </td>
-                        
-                        
                         <td>
-                <IconButton aria-label="edit" color="primary" onClick={handleOpen}>
-                    <EditIcon/>
-                </IconButton>
+                            <IconButton aria-label="edit" color="primary" onClick={handleOpen}>
+                                <EditIcon/>
+                            </IconButton>
                         </td>
-                        
                     <Modal
                         open={open}
                         onClose={handleClose}
@@ -241,17 +248,16 @@ const Libro = ({libro}) => {
                     {body}
                     </Modal>
                     <td>
-                <IconButton aria-label="delete" color="secondary"
-                    onClick={() => libroEliminar(libro.id)}>
-                    <DeleteIcon/>
-                </IconButton>
-                        </td>
-
-                        <td>
-                <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
-                    <VerticalAlignTopIcon/>
-                </IconButton>
-                        </td>
+                        <IconButton aria-label="delete" color="secondary"
+                            onClick={() => libroEliminar(libro.id)}>
+                            <DeleteIcon/>
+                        </IconButton>
+                    </td>
+                    <td>
+                        <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
+                            <VerticalAlignTopIcon/>
+                        </IconButton>
+                    </td>
                         
                     <Modal
                         open={open}

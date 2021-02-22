@@ -7,7 +7,7 @@ import {MOSTRAR_ALERTA, OCULTAR_ALERTA} from '../../types'
 const AlertaState = (props) => {
 
     const initialState = {
-        alerta: null
+        alerta: null,
     }
 
     const [state, dispatch] = useReducer(alertaReducer, initialState)
@@ -31,6 +31,7 @@ const AlertaState = (props) => {
         <alertaContext.Provider
             value={{
                 alerta : state.alerta,
+                error: state.error,
                 mostrarAlerta
             }}
         >
