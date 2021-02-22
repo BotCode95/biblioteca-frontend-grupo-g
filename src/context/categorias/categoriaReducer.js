@@ -34,7 +34,6 @@ export default (state,action) => {
             return {
                 ...state,
                 categoria : state.categorias.map(categoria => categoria.id === action.payload)
-
             }
         case ERROR_CATEGORIA:
             return {

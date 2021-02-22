@@ -7,6 +7,7 @@ import AlertaState from './context/alertas/alertaState';
 import Layout from './components/layout/Layout';
 import NuevaCategoria from './components/categorias/NuevaCategoria'
 import NuevaPersona from './components/personas/NuevaPersona'
+import EditarPersona from './components/personas/EditarPersona'
 import NuevoLibro from './components/libros/NuevoLibro';
 import ListadoCategoria from './components/categorias/ListadoCategoria'
 import ListadoPersona from './components/personas/ListadoPersona'
@@ -26,6 +27,7 @@ function App() {
                 <Route exact path="/" component= {Layout} />
                 <Route exact path="/nueva-categoria" component={NuevaCategoria}/>
                 <Route exact path="/nueva-persona" component={NuevaPersona}/>
+                <Route exact path="/editar-persona" component={EditarPersona}/>
                 <Route exact path="/nuevo-libro" component={NuevoLibro}/>
                 <Route exact path="/listado-categoria" component={ListadoCategoria}/>
                 <Route exact path="/listado-persona" component={ListadoPersona}/>

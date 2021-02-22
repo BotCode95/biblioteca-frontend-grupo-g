@@ -2,7 +2,7 @@ import React, {useReducer} from 'react'
 import personaContext from './personaContext'
 import personaReducer from './personaReducer'
 import {AGREGAR_PERSONA, OBTENER_PERSONAS, 
-    PERSONA_ACTUAL, ELIMINAR_PERSONA, ERROR_PERSONA} from '../../types'
+    PERSONA_ACTUAL, ELIMINAR_PERSONA, ERROR_PERSONA, ACTUALIZAR_PERSONA, PERSONA_SIN_DATOS} from '../../types'
 
 import clienteAxios from '../../config/axios'
 
@@ -10,7 +10,8 @@ const PersonaState = (props) => {
     const initialState = {
         personas : [],
         persona: null,
-        mensaje: null
+        mensaje: null,
+        personaSeleccionada: null
     }
 
     const [state, dispatch] = useReducer(personaReducer, initialState);
@@ -41,13 +42,18 @@ const PersonaState = (props) => {
         }
     }
 
-    const personaActual = personaId => {
+    // const personaActual = personaId => {
+    //     dispatch({
+    //         type: PERSONA_ACTUAL,
+    //         payload: personaId
+    //     })
+    // }
+    const personaActual = persona => {
         dispatch({
             type: PERSONA_ACTUAL,
-            payload: personaId
+            payload: persona
         })
     }
-
     const eliminarPersona = async (personaId) => {
         try {
             const contenido = await clienteAxios.delete(`/persona/${personaId}`);
@@ -64,16 +70,42 @@ const PersonaState = (props) => {
             })
         }
     }
+
+    const actualizarPersona = async persona => {
+        try {
+            const contenido = await clienteAxios.put(`/persona/${persona.id}`, persona);
+            console.log(contenido);
+            dispatch({
+                type: ACTUALIZAR_PERSONA,
+                payload: contenido.data.persona
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+  
+
+    const personaSinDatos = () => {
+        dispatch({
+            type: PERSONA_SIN_DATOS
+        })
+    }
+
     return ( 
         <personaContext.Provider
             value={{
                 personas: state.personas,
                 persona: state.persona,
                 mensaje: state.mensaje,
+                personaSeleccionada: state.personaSeleccionada,
                 agregarPersona,
                 obtenerPersonas,
                 personaActual,
-                eliminarPersona
+                eliminarPersona,
+                actualizarPersona,
+                // guardarPersonaActual,
+                personaSinDatos
             }}
         >
             {props.children}
