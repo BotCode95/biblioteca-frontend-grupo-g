@@ -17,7 +17,8 @@ export default (state,action) => {
         case PERSONA_ACTUAL: 
             return {
                 ...state,
-                persona: state.personas.filter(persona => persona.id === action.payload)
+                personaSeleccionada: action.payload
+                // persona: state.personas.filter(persona => persona.id === action.payload)
             }
         case ELIMINAR_PERSONA :
             return {
@@ -28,10 +29,7 @@ export default (state,action) => {
         case ACTUALIZAR_PERSONA :
             return {
                 ...state,
-                // persona : state.personas.map(persona => persona.id === action.payload)
-                persona: state.personas.map(persona => persona.id === action.payload.id 
-                    ? action.payload 
-                    : persona)
+                personas: state.personas.map(persona => persona.id === action.payload)
             }
         case PERSONA_SIN_DATOS:
             return {

@@ -6,11 +6,12 @@ import personaContext from '../../context/personas/personaContext'
 
 const ListadoPersona = () => {
     const personasContext = useContext(personaContext);
-    const {personas, obtenerPersonas} = personasContext;
+    const {persona,personas, obtenerPersonas} = personasContext;
     // parar el effect
     useEffect(() => {
+        //no carga la primer edicion
         obtenerPersonas();
-    },[])
+    },[persona])
 
     // if(categorias.length === 0) return <p>No hay categorias, podes crear una</p>
     return (

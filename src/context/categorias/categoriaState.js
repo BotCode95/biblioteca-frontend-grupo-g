@@ -7,7 +7,6 @@ import {
     CATEGORIA_ACTUAL, 
     ELIMINAR_CATEGORIA,
     ERROR_CATEGORIA,
-    ACTUALIZAR_CATEGORIA
 } from '../../types';
 import clienteAxios from '../../config/axios';
 
@@ -21,7 +20,6 @@ const CategoriaState = (props) => {
     const [state, dispatch] = useReducer(categoriaReducer, initialState);
 
     const agregarCategoria = async categoria => {
-        // console.log(categoria);
         try {
             const contenido = await clienteAxios.post('/categoria' , categoria);
             console.log(contenido);
@@ -78,18 +76,7 @@ const CategoriaState = (props) => {
         }
     }
 
-    const actualizarCategoria = async categoria => {
-        try {
-            const contenido = await clienteAxios.put(`/categoria/${categoria.id}`, categoria);
-            console.log(contenido);
-            dispatch({
-                type: ACTUALIZAR_CATEGORIA,
-                payload: contenido.data.categoria
-            })
-        } catch (error) {
-            console.log(error);
-        }
-    }
+   
 
     return (  
         <categoriaContext.Provider
@@ -101,7 +88,6 @@ const CategoriaState = (props) => {
                 obtenerCategorias,
                 categoriaActual,
                 eliminarCategoria,
-                actualizarCategoria
             }}
         >
             {props.children}

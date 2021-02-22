@@ -1,11 +1,12 @@
 import React,{useState, useContext, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import imagen from '../../question1.svg';
 import Layout from '../../components/layout/Layout'
 import categoriaContext from '../../context/categorias/categoriaContext'
 import alertaContext from '../../context/alertas/alertaContext'
 
-const NuevaCategoria = () => {
-
+    const NuevaCategoria = () => {
+    const history= useHistory()
     const categoriasContext = useContext(categoriaContext);
     const {mensaje, agregarCategoria} = categoriasContext;
 
@@ -41,6 +42,8 @@ const NuevaCategoria = () => {
         setCategoria({
             nombre: ''
         })
+
+        history.push('/listado-categoria');
     }
     return (
         <>

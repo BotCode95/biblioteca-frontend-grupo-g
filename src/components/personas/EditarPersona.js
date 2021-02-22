@@ -6,7 +6,7 @@ import {useHistory} from 'react-router-dom';
 const EditarPersona = () => {
     const history = useHistory();
     const personasContext = useContext(personaContext);
-    const {personas, actualizarPersona, personaSeleccionada, personaSinDatos} = personasContext;
+    const { actualizarPersona, personaSeleccionada, personaSinDatos} = personasContext;
 
     const [persona, setPersonas ] = useState({
         nombre:"",
@@ -15,12 +15,12 @@ const EditarPersona = () => {
         email:""
     });
     
-    const personaeditar = personaSeleccionada;
+    // const personaeditar = personaSeleccionada;
     
     useEffect(() => {
-        setPersonas(personaeditar);
+        setPersonas(personaSeleccionada);
         
-    },[personaeditar]);
+    },[personaSeleccionada]);
     
     //Funcion que se actualiza cada vez que el usuario escribe algo
     const actualizarState = e =>{
@@ -36,14 +36,10 @@ const EditarPersona = () => {
     //Cuando el usuario presiona guardar
     const handleSubmit = e =>{
        e.preventDefault();
-       console.log("enviando form");
+        actualizarPersona(persona);
+        personaSinDatos();
 
-        // if(personaeditar){
-            actualizarPersona(persona);
-            personaSinDatos();
-        // }
-
-        history.push('/');
+        history.push('/listado-persona');
     }
 
     return ( 
@@ -89,6 +85,7 @@ const EditarPersona = () => {
                                 type="text" 
                                 name="email"
                                 className="form-input"
+                                disabled="true"
                                 value={email}
                                 onChange= {actualizarState} 
                             /> 
@@ -102,7 +99,7 @@ const EditarPersona = () => {
                         </div>  
                     </form>    
                 </div>    
-                </div>    
+            </div>    
         </Fragment>
      );
 }

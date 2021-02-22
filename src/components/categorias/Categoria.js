@@ -36,87 +36,87 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Categoria = ({categoria}) => {
-    const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
-    const [modalStyle] = useState(getModalStyle);
-    const [open, setOpen] = useState(false);
+    // const classes = useStyles();
+    // // getModalStyle is not a pure function, we roll the style only on the first render
+    // const [modalStyle] = useState(getModalStyle);
+    // const [open, setOpen] = useState(false);
 
-    const handleOpen = () => {
-      setOpen(true);
-    };
+    // const handleOpen = () => {
+    //   setOpen(true);
+    // };
   
-    const handleClose = () => {
-      setOpen(false);
-    };
+    // const handleClose = () => {
+    //   setOpen(false);
+    // };
 
   
     
-    // const categoriasContext = useContext(categoriaContext);
-    // const {mensaje, agregarCategoria} = categoriasContext;
+    // // const categoriasContext = useContext(categoriaContext);
+    // // const {mensaje, agregarCategoria} = categoriasContext;
 
 
-    const [categoriaEdit, setCategoria] = useState({
-        nombre: '',
+    // const [categoriaEdit, setCategoria] = useState({
+    //     nombre: '',
         
-    });
-    // const {id} = categoria;
-    const {nombre} = categoriaEdit
+    // });
+    // // const {id} = categoria;
+    // const {nombre} = categoriaEdit
    
 
-    const onChange = e => {
-        setCategoria({
-            ...categoriaEdit,
-            [e.target.name]: e.target.value
-        })
-    }
-    const categoriaActualizar = id => {
-        actualizarCategoria(id)
-    }
+    // const onChange = e => {
+    //     setCategoria({
+    //         ...categoriaEdit,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
+    // const categoriaActualizar = id => {
+    //     actualizarCategoria(id)
+    // }
 
 
-    const submitCategoria = e => {
-        e.preventDefault();
-        // if(nombre.trim() === ''){
-        //     console.log('El nombre esta vacio');
-        // }
-        console.log('Enviado');
-        categoriaActualizar(categoriaEdit);
+    // const submitCategoria = e => {
+    //     e.preventDefault();
+    //     // if(nombre.trim() === ''){
+    //     //     console.log('El nombre esta vacio');
+    //     // }
+    //     console.log('Enviado');
+    //     categoriaActualizar(categoriaEdit);
 
-    }
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-         <div className="contenedor-form">
-                <h1>Editar Categoría</h1>
-                <form 
-                    onSubmit={submitCategoria}
-                    className="form"
-                >
-                    <div>
-                        <label htmlFor="nombre">Nombre de Categoría:</label>
-                        <input 
-                            type="text" 
-                            name="nombre"
-                            id="nombre"
-                            className="form-input"
-                            placeholder={categoria.nombre}
-                            value={nombre} 
-                            onChange={onChange}
-                            />
-                    </div>
-                    <div>
-                        <input
-                            type="submit"
-                            className="boton-submit"
-                            value="Guardar Categoría"/>
-                    </div>
-                </form>
-            </div>
-      </div>
-    );
+    // }
+    // const body = (
+    //     <div style={modalStyle} className={classes.paper}>
+    //      <div className="contenedor-form">
+    //             <h1>Editar Categoría</h1>
+    //             <form 
+    //                 onSubmit={submitCategoria}
+    //                 className="form"
+    //             >
+    //                 <div>
+    //                     <label htmlFor="nombre">Nombre de Categoría:</label>
+    //                     <input 
+    //                         type="text" 
+    //                         name="nombre"
+    //                         id="nombre"
+    //                         className="form-input"
+    //                         placeholder={categoria.nombre}
+    //                         value={nombre} 
+    //                         onChange={onChange}
+    //                         />
+    //                 </div>
+    //                 <div>
+    //                     <input
+    //                         type="submit"
+    //                         className="boton-submit"
+    //                         value="Guardar Categoría"/>
+    //                 </div>
+    //             </form>
+    //         </div>
+    //   </div>
+    // );
   
 
     const categoriasContext = useContext(categoriaContext)
-    const {actualizarCategoria, agregarCategoria, categoriaActual, eliminarCategoria} = categoriasContext;
+    const {categoriaActual, eliminarCategoria} = categoriasContext;
 
     const seleccionarCategoria = id => {
         categoriaActual(id);
@@ -161,17 +161,17 @@ const Categoria = ({categoria}) => {
                 
             </button>
             <div className="item-container">
-                <IconButton aria-label="edit" color="primary" onClick={handleOpen}>
+                {/* <IconButton aria-label="edit" color="primary" onClick={handleOpen}>
                     <EditIcon/>
-                </IconButton>
-                    <Modal
+                </IconButton> */}
+                    {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                         >
                     {body}
-                    </Modal>
+                    </Modal> */}
                 <IconButton aria-label="delete" color="secondary"
                     onClick={() => categoriaEliminar(categoria.id)}>
                     <DeleteIcon/>

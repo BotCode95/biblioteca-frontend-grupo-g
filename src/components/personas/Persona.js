@@ -15,7 +15,6 @@ const Persona = ({persona}) => {
         
         personaActual(persona);
         history.push(`/persona/${persona.id}`)
-        // history.push('/editar-persona')
     }
     const personaEliminar = id => {
         eliminarPersona(id);
@@ -39,15 +38,10 @@ const Persona = ({persona}) => {
                                 onClick={() => personaEliminar(persona.id)}>
                                 <DeleteIcon/>
                             </IconButton>
-                            {/* <button  className="item-botonera-eliminar">Eliminar</button> */}
                         </td>
                     </tr>                    
                 </tbody>
- 
-
         </Fragment>
-
-        
     )
 }
 
