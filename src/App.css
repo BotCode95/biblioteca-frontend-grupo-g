@@ -88,7 +88,14 @@ nav {
   justify-content: space-around;
   align-items: flex-start;
 }
-
+.title{
+  font-size: 6rem;
+  transition: 1.5s all;
+}
+.title:hover{
+  cursor:pointer;
+  transform: scale(1.2);
+}
 .dropbtn {
   background-color:var(--color-nav);
   color: white;
