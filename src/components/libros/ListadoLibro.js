@@ -17,15 +17,25 @@ console.log(libros);
         <>
         <Layout/>
         <h1 className="text-titulo">Listado de Libros</h1>
-        <div className="listado-container">
-            <ul className="listado">
+        <table className="tabla-persona">
+                <thead className="tabla-head">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Categoria</th>
+                            <th>Prestado</th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+                            <th>#</th>
+                        </tr>
+                </thead>
                 {libros.map(libro => (
                     <Libro
                         libro = {libro}
                     />
                 ))}
-            </ul>
-        </div>
+        </table>
         </>
     )
 }
