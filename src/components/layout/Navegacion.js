@@ -12,14 +12,14 @@ const Navegacion = () => {
                 </div>
             </div>
             <div className="dropdown">
-                <button className="dropbtn">Categoria</button>
+                <button className="dropbtn">Categorias</button>
                 <div className="dropdown-content">
                     <Link to={"/nueva-categoria"}>Nueva Categoria</Link>
                     <Link to={"/listado-categoria"}>Listado Categoria</Link>
                 </div>
             </div>
              <div className="dropdown">
-                <button className="dropbtn">Libro</button>
+                <button className="dropbtn">Libros</button>
                 <div className="dropdown-content">
                     <Link to={"/nuevo-libro"}>Nuevo Libro</Link>
                     <Link to={"/listado-libro"}>Listado Libro</Link>

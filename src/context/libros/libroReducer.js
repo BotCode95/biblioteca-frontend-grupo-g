@@ -1,4 +1,4 @@
-import {OBTENER_LIBROS, LIBRO_ACTUAL, AGREGAR_LIBRO} from '../../types';
+import {OBTENER_LIBROS, LIBRO_ACTUAL, AGREGAR_LIBRO, ELIMINAR_LIBRO, ERROR_LIBRO, ACTUALIZAR_LIBRO, DEVOLVER_LIBRO, PRESTAR_LIBRO} from '../../types';
 
 export default (state,action) => {
     switch(action.type) {
@@ -16,6 +16,35 @@ export default (state,action) => {
             return {
                 ...state,
                 libro : state.libros.filter(libro => libro.id === action.payload)
+            }
+            case ELIMINAR_LIBRO :
+            return {
+                ...state,
+                libros: state.libros.filter(libro => libro.id !== action.payload),
+                libro: null, //reinicio
+            }
+        case ACTUALIZAR_LIBRO :
+            return {
+                ...state,
+                libro : state.libros.map(libro => libro.id === action.payload)
+
+            }
+        case ERROR_LIBRO:
+            return {
+                ...state,
+                mensaje: action.payload
+            }
+        case DEVOLVER_LIBRO :
+            return {
+                ...state,
+                libros: state.libros.filter(libro => libro.id == action.payload),
+                persona_id: null, //reinicio
+            }
+        case PRESTAR_LIBRO :
+            return {
+                ...state,
+                libros: state.libros.filter(libro => libro.id == action.payload),
+                persona_id: null, //reinicio
             }
         default: 
            return state;

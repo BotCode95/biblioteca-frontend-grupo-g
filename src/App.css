@@ -1,3 +1,4 @@
+
 :root {
   --main-color: #F2C230;
   --gris1: #edf2f6;
@@ -250,19 +251,21 @@ nav {
   text-align: center;
   text-transform: uppercase;
 }
+.tabla-persona{
+  margin:auto;
+  background-color: #edf2f6;
+}
 
-.tabla-persona th{
-  text-align: left;
-  padding-bottom: 10px;
-  padding-inline: 30px;
- 
-
+.tabla-head th{  
+  text-align: center;
+  vertical-align: middle;
+  padding: auto;  
+  color:#8C1D04;
 }
 .tabla-persona td{
   text-align: left;
   padding: 0 30px;  
 }
-
 .alerta-error{
   background-color: red;
 }
