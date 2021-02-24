@@ -2,15 +2,22 @@ import React, {useContext, useEffect} from 'react'
 import Layout from '../layout/Layout'
 import Persona from './Persona'
 import personaContext from '../../context/personas/personaContext'
+import libroContext from '../../context/libros/libroContext'
+
 
 
 const ListadoPersona = () => {
     const personasContext = useContext(personaContext);
     const {persona,personas, obtenerPersonas} = personasContext;
+
+    const librosContext = useContext(libroContext)
+    const { obtenerLibros } = librosContext;
+    
     // parar el effect
     useEffect(() => {
         //no carga la primer edicion
         obtenerPersonas();
+        obtenerLibros();
     },[persona])
 
     // if(categorias.length === 0) return <p>No hay categorias, podes crear una</p>
@@ -31,6 +38,7 @@ const ListadoPersona = () => {
                             <th>Email</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
+                            <th>Libros</th>
                         </tr>
                 </thead>
                     {personas.map(persona => (

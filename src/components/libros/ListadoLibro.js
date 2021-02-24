@@ -8,17 +8,18 @@ const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
     const {libros, obtenerLibros} = librosContext;
-
-    const personasContext = useContext(personaContext)
-    const {personas, obtenerPersonas, persona} = personasContext;
-    console.log(personas)
     
 
+    const personasContext = useContext(personaContext)
+    const {personas, obtenerPersonas} = personasContext;
+    
+    
     useEffect(() => {        
         obtenerLibros();
         obtenerPersonas();
     },[])
-   
+    
+    // console.log(personas)
     return(
         <>
         <Layout/>
@@ -40,6 +41,8 @@ const ListadoLibro = () => {
                     <Libro
                         key = {libro.id}
                         libro = {libro}
+                        
+                        
                         
                     />
                 ))}

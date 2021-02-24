@@ -38,7 +38,7 @@ const LibroState = (props) => {
     const obtenerLibros = async () => {
         try {
             const contenido = await clienteAxios.get('/libro')
-            console.log(contenido);
+            //console.log(contenido);
             dispatch({
                 type: OBTENER_LIBROS,
                 payload: contenido.data.respuesta

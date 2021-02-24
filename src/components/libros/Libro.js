@@ -13,55 +13,37 @@ import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 
 const Libro = ({libro}) => {
 
-  const librosContext = useContext(libroContext)
-  const {actualizarLibro, agregarlibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
+    const {nombre, descripcion, persona_id, categoria_id} = libro; 
+    //console.log(libro);
 
-  const personasContext = useContext(personaContext)
-  const { obtenerPersonas, personas  } = personasContext;
-  
-
-  const nombrePers = () =>{
-      const perSel = personas.filter(persona => persona.id === persona_id)
-          console.log(perSel)
-  }
-  nombrePers();
-  
-    //MODAL
-    const [libroEdit, setLibro] = useState({
-      nombre: '',
-      descrpcion:'',
-      categoria_id:0, 
-      persona_id:0, 
-      
-  });
-  // const {id} = categoria;
-  const {nombre, descripcion, persona_id} = libroEdit   
+    
+    const librosContext = useContext(libroContext)
+    const {actualizarLibro, agregarlibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
+    
+    const personasContext = useContext(personaContext)
+    const { obtenerPersonas, personas } = personasContext;
     
     
 
-  const onChange = e => {
-      setLibro({
-          ...libroEdit,
-          [e.target.name]: e.target.value
-      })
-  }
-  const libroActualizar = id => {
-      actualizarLibro(id)
-  }
+    const nombrePers = ()=>{
+        const nombSel = personas.filter(persona => persona.id === persona_id);
+        
+        let nuevoAlias = new Array(); 
 
-
-  const submitLibro = e => {
-      e.preventDefault();
-      // if(nombre.trim() === ''){
-      //     console.log('El nombre esta vacio');
-      // }
-      console.log('Enviado');
-      libroActualizar(libroEdit);
-
-  }
-
-  
-    // console.log ("Esto buscamos" , personaSeleccionada)
+        for(let i=0; i< nombSel.length; i++){
+            let item; 
+            //console.log(nombSel[i].alias);
+            let alias = nombSel[i].alias;
+            nuevoAlias.push(alias);
+           
+        }
+        console.log(nuevoAlias.toString());
+        let aliasString = (nuevoAlias.toString());
+        return aliasString;
+    }
+    nombrePers();
+    
+    
     
     const seleccionarLibro = id => {
         libroActual(id);
@@ -124,10 +106,10 @@ const Libro = ({libro}) => {
             
             <tbody >
                     <tr>
-                        <td> {libro.nombre} </td>
-                        <td> {libro.descripcion} </td>
-                        <td> {libro.categoria_id} </td>
-                        <td> {libro.persona_id} </td>
+                        <td> {nombre} </td>
+                        <td> {descripcion} </td>
+                        <td> {categoria_id} </td>
+                        <td> {} </td>
                         
                         
                         <td>
