@@ -84,11 +84,14 @@ const LibroState = (props) => {
     }
     const devolverLibro = async (libroId) => {
         try {
-            const contenido = await clienteAxios.put(`/libro/${libroId}`);
+            const contenido = await clienteAxios.put(`/libro/devolver/${libroId}`);
             console.log(contenido)
             dispatch({
                 type: DEVOLVER_LIBRO,
-                payload: libroId
+                payload: null,
+                
+                
+                // persona_id:"null"
             })
         } catch (error) {
             console.log(error);
@@ -124,7 +127,9 @@ const LibroState = (props) => {
                 obtenerLibros,
                 libroActual,
                 eliminarLibro,
-                actualizarLibro
+                actualizarLibro,
+                devolverLibro,
+                prestarLibro
             }}
         >
             {props.children}

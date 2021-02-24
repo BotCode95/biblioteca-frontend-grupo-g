@@ -60,6 +60,7 @@ const NuevaPersona = () => {
             {error ? <p>Todos los campos son obligatorios</p> : null}
         <div className="container">
             <div className="contenedor-form">
+                <h1>Ingrese una persona</h1>
             <form onSubmit= {handleSubmit}
              className="form">
                 <div>
