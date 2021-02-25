@@ -1,12 +1,15 @@
 import React, {useReducer} from 'react'
 import libroContext from './libroContext'
 import libroReducer from './libroReducer'
-import {AGREGAR_LIBRO, OBTENER_LIBROS, LIBRO_ACTUAL, ELIMINAR_LIBRO, ERROR_LIBRO, ACTUALIZAR_LIBRO, DEVOLVER_LIBRO, PRESTAR_LIBRO} from '../../types';
+import {AGREGAR_LIBRO, OBTENER_LIBROS, LIBRO_ACTUAL, 
+    ELIMINAR_LIBRO, ERROR_LIBRO, ACTUALIZAR_LIBRO, 
+    LIBROS_CATEGORIA, DEVOLVER_LIBRO, PRESTAR_LIBRO} from '../../types';
 import clienteAxios from '../../config/axios';
 
 const LibroState = (props) => {
     const initialState = {
         libros : [],
+        librosCategoria: [],
         libro: null,
         mensaje: null,
         personaActual: null
@@ -116,6 +119,20 @@ const LibroState = (props) => {
         }
     }
 
+    const obtenerLibrosCategoria = async categoria => {
+        console.log(categoria);
+        try {
+            const contenido = await clienteAxios.get('/libro', {params: {categoria}})
+            console.log(contenido);
+            dispatch({
+                type: LIBROS_CATEGORIA,
+                payload: contenido.data.libros
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     // const obtenerLibroPersona = async personaId => {
     //     try {
     //         const contenido = await clienteAxios.get('/libro', {params: personaId})
@@ -129,13 +146,15 @@ const LibroState = (props) => {
         <libroContext.Provider
             value={{
                 libros: state.libros,
+                librosCategoria: state.librosCategorias,
                 libro: state.libro,
                 mensaje: state.mensaje,
                 agregarLibro,
                 obtenerLibros,
                 libroActual,
                 eliminarLibro,
-                actualizarLibro
+                actualizarLibro,
+                obtenerLibrosCategoria
             }}
         >
             {props.children}

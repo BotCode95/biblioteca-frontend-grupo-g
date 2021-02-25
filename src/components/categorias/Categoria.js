@@ -1,17 +1,25 @@
 import React, {useContext, useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom'
 import categoriaContext from '../../context/categorias/categoriaContext';
+import libroContext from '../../context/libros/libroContext';
 import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const Categoria = ({categoria}) => {
-
+    const history = useHistory();
     const categoriasContext = useContext(categoriaContext)
     const {categoriaActual, eliminarCategoria} = categoriasContext;
 
+    const librosContext = useContext(libroContext);
+    const {obtenerLibrosCategoria } = librosContext;
+
+
     const seleccionarCategoria = id => {
         categoriaActual(id);
+        obtenerLibrosCategoria(id); 
+        history.push(`/libros/categoria/${categoria.id}`)
     }
 
      const categoriaEliminar = id => {

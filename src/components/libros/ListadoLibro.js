@@ -2,18 +2,23 @@ import React, {useContext, useEffect} from 'react';
 import Layout from '../../components/layout/Layout'
 import Libro from './Libro';
 import libroContext from '../../context/libros/libroContext';
+import categoriaContext from '../../context/categorias/categoriaContext';
 
 const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
     const {libros, obtenerLibros} = librosContext;
 
-    
+    const categoriasContext = useContext(categoriaContext);
+    const {obtenerCategorias, categoria, categorias} = categoriasContext;
 
     useEffect(() => {
         obtenerLibros();
+        obtenerCategorias();
     },[])
    
+
+    console.log(categorias);
     return(
         <>
         <Layout/>

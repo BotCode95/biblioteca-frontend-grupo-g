@@ -1,5 +1,9 @@
-import {OBTENER_LIBROS, LIBRO_ACTUAL, AGREGAR_LIBRO, ELIMINAR_LIBRO, ERROR_LIBRO, ACTUALIZAR_LIBRO, DEVOLVER_LIBRO, PRESTAR_LIBRO} from '../../types';
+import {OBTENER_LIBROS, LIBRO_ACTUAL, 
+    AGREGAR_LIBRO, ELIMINAR_LIBRO, 
+    ERROR_LIBRO, ACTUALIZAR_LIBRO, LIBROS_CATEGORIA,
+    DEVOLVER_LIBRO, PRESTAR_LIBRO} from '../../types';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (state,action) => {
     switch(action.type) {
         case OBTENER_LIBROS : 
@@ -27,7 +31,11 @@ export default (state,action) => {
             return {
                 ...state,
                 libro : state.libros.map(libro => libro.id === action.payload)
-
+            }
+        case LIBROS_CATEGORIA:
+            return {
+                ...state,
+                librosCategoria: action.payload
             }
         case ERROR_LIBRO:
             return {

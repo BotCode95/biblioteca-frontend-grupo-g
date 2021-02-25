@@ -13,6 +13,7 @@ import NuevoLibro from './components/libros/NuevoLibro';
 import ListadoCategoria from './components/categorias/ListadoCategoria'
 import ListadoPersona from './components/personas/ListadoPersona'
 import ListadoLibro from './components/libros/ListadoLibro';
+import ListadoLibrosCategoria from './components/libros/ListadoLibrosCategoria';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                 <Route exact path="/listado-categoria" component={ListadoCategoria}/>
                 <Route exact path="/listado-persona" component={ListadoPersona}/>
                 <Route exact path="/listado-libro" component={ListadoLibro}/>
+                <Route exact path="/libros/categoria/:id" component={ListadoLibrosCategoria}/>
               </Switch>
             </Router>
           </AlertaState>
