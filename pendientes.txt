@@ -1,0 +1,44 @@
+
+Persona
+
+* Formulario para ingresar una nueva persona (amigos a los que les prestare libros)
+
+* Un listado o cards desde el que se puedan ver todas las personas y tenga funcion para borrar y modificar sus datos (pueden ser iconos o botones)
+
+(PENDIENTE)
+Se tiene que poder ver los libros que tiene una persona prestados (es decir, los libros que le preste)
+
+(PENDIENTE)
+Si la persona no tiene libros que el boton de libro aparezca apagado
+
+
+
+Generos
+
+* Formulario para ingresar un nuevo genero
+
+* Un listado o cards de generos donde tambien se cuente con la funcionlidad de borrado o modificacion
+
+
+* Se tiene que poder ver todos los libros de un genero, puede ser una funcionalidad extra en el listado/card del punto anterior o bien otra pantalla donde se seleccione el genero y muestren los libros
+(PENDIENTE) MODAL con SELECT 
+
+
+
+Libro
+
+* Formulario para ingresar nuevo libro
+(PENDIENTE => falta conectar los SELECT: 
+     persona con alias de '/persona' donde id sea el persona_id de '/libro'
+     categoria con '/categoria' donde id sea el categoria_id de '/libro')
+
+
+* Listado de todos los libros que muestre el alias de la persona que lo tiene en caso de estar prestado; debe contar con boton para borrar, modificar, prestar/devolver libro
+(PENDIENTE => 
+falta traer alias de '/persona' donde id sea el persona_id de '/libro'
+falta traer nombre de '/categoria' donde id sea el categoria_id de '/libro')
+
+* incorporacion de mensajes de aviso al usuario.
+(PENDIENTE => Conectar alertas)
+
+

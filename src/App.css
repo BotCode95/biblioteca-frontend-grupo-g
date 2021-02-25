@@ -1,4 +1,7 @@
-
+/*  
+ *{
+  border:1px solid black
+}   */
 :root {
   --main-color: #F2C230;
   --gris1: #edf2f6;
@@ -68,21 +71,25 @@ a {
   height: 100px;
   margin: 0;
   padding: 0;
-  background-color: var(--primary);
+  background-color: var(--primary); 
 }
-
+ 
 .layout-text {
   font-size: 5rem;
   text-align: left;
   margin-left: 2rem;
   /* padding-top: 2rem; */
+  color:white
+  /* padding-top: 2rem; */
 }
 .text-titulo{
-  margin-top: 6rem;
+  margin-top: 10rem;
 }
 .nav-contenedor{
+  margin-top: 0;
   width: 100%;
   background-color: var(--color-nav );
+  
 }
 nav {
   display: flex;
@@ -140,7 +147,7 @@ nav {
 /* formularios */
 
 .contenedor-form {
-  padding: 5rem 3rem;
+  padding: 3rem;
   max-width: 500px;
   width: 95%;
   background-color: var(--primary);
@@ -149,19 +156,18 @@ nav {
   margin: auto;
 }
 
-
-
 .form{
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
-  margin-left: 45px;
+  margin-left: auto;
+  color: white;
   /* background-color: var(--gris2); */
 }
 .form-input {
   padding: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
   border: none;
   border-radius: .5rem;
   flex: 1;
@@ -272,4 +278,8 @@ nav {
 
 .alerta-ok {
   background-color: green;
+}
+
+.texto-modal{
+  color: white;
 }

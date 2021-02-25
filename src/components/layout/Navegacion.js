@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 
 const Navegacion = () => {
     return (
+        <div>
         <nav className="nav-contenedor">
             <div className="dropdown">
                 <button className="dropbtn">Personas</button>
@@ -26,6 +27,7 @@ const Navegacion = () => {
                 </div>
             </div>
         </nav>
+        </div>
     )
 }
 

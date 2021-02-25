@@ -1,5 +1,7 @@
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useState, useEffect } from 'react';
 import libroContext from '../../context/libros/libroContext';
+import personaContext from '../../context/personas/personaContext'
+import categoriaContext from '../../context/categorias/categoriaContext'
 
 import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,165 +10,68 @@ import EditIcon from '@material-ui/icons/Edit';
 import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
 import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 const Libro = ({libro}) => {
 
-    const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
-    const [modalStyle] = useState(getModalStyle);
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
-
-  
-    
-    // const categoriasContext = useContext(categoriaContext);
-    // const {mensaje, agregarCategoria} = categoriasContext;
-
-
-    const [libroEdit, setLibro] = useState({
-        nombre: '',
-        descrpcion:'',
-        //categoria_id:0, Habria que ver de importar el ato de '/categoria'
-        //persona_id:0, Habria que ver de importar el ato de '/persona'
-        
-    });
-    // const {id} = categoria;
-    const {nombre, descripcion} = libroEdit
-   
-
-    const onChange = e => {
-        setLibro({
-            ...libroEdit,
-            [e.target.name]: e.target.value
-        })
-    }
-    const libroActualizar = id => {
-        actualizarLibro(id)
-    }
-
-
-    const submitLibro = e => {
-        e.preventDefault();
-        // if(nombre.trim() === ''){
-        //     console.log('El nombre esta vacio');
-        // }
-        console.log('Enviado');
-        libroActualizar(libroEdit);
-
-    }
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-         <div className="contenedor-form">
-                <h1>Editar Libro</h1>
-                <form 
-                    onSubmit={submitLibro}
-                    className="form"
-                >
-                    <div>
-                        <p>Titulo: {libro.nombre}</p>
-                        <label htmlFor="descripcion">Editar descripción:</label>
-                        <input 
-                            type="textarea" 
-                            name="descripcion"
-                            id="descripcion"
-                            className="form-input"
-                            placeholder={libro.descripcion}
-                            value={descripcion} 
-                            onChange={onChange}
-                            />
-                    </div>
-                    <div>
-                        <input
-                            type="submit"
-                            className="boton-submit"
-                            value="Guardar Descripcion"/>
-                    </div>
-                </form>
-            </div>
-      </div>
-    );
-
-    const bodyPrestar = (
-        <div style={modalStyle} className={classes.paper}>
-         <div className="contenedor-form">
-                <h1>Prestar Libro</h1>
-                <form 
-                    onSubmit={submitLibro}
-                    className="form"
-                >
-                    <div>
-                        <p>Titulo: {libro.nombre}</p>
-                        <label htmlFor="descripcion">Nombre:</label>
-                        <input 
-                            type="text" 
-                            name="nombre"
-                            id="nombre"
-                            className="form-input"
-                            //placeholder={persona_id}//traer nombre de '/persona'
-                            //value={persona_id} //traer nombre de '/persona'
-                            onChange={onChange}
-                            />
-                    </div>
-                    <div>
-                        <input
-                            type="submit"
-                            className="boton-submit"
-                            value="Prestar"/>
-                    </div>
-                </form>
-            </div>
-      </div>
-    );
-  
-
+    const {nombre, descripcion, persona_id, categoria_id} = libro; 
+       
     const librosContext = useContext(libroContext)
     const {actualizarLibro, agregarlibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
+    
+    const personasContext = useContext(personaContext)
+    const { obtenerPersonas, personas } = personasContext;
 
+    const categoriasContext = useContext(categoriaContext)
+    const { categorias } = categoriasContext;
+    
+    
+
+    // const nombrePers = ()=>{
+    //     const nombSel = personas.filter(persona => persona.id === persona_id);
+        
+    //     let nuevoAlias = new Array(); 
+
+    //     for(let i=0; i< nombSel.length; i++){
+    //         let item; 
+    //         //console.log(nombSel[i].alias);
+    //         let alias = nombSel[i].alias;
+    //         nuevoAlias.push(alias);
+           
+    //     }
+    //     console.log(nuevoAlias.toString());
+    //     let aliasString = (nuevoAlias.toString());
+    //     return aliasString;
+    // }
+    // nombrePers();
+    
+    const nombSel = personas.filter(persona => persona.id === persona_id)
+    let nuevoAlias = new Array(); 
+
+         for(let i=0; i< nombSel.length; i++){
+                         
+             let alias = nombSel[i].alias;
+             nuevoAlias.push(alias);
+         }
+    
     const seleccionarLibro = id => {
         libroActual(id);
     }
 
-  
+    const nombCat = categorias.filter(categoria => categoria.id === categoria_id)
+    console.log(nombCat);
+
+    
+    let nuevoCat = new Array(); 
+
+         for(let i=0; i< nombCat.length; i++){
+                         
+             let catNom = nombCat[i].nombre;
+             nuevoCat.push(catNom);
+         }
 
      const libroEliminar = id => {
-        // if(categoria.length > 0) {
-        //    <p>{mensaje}</p>
-        // }
+      
         Swal.fire({
             title: 'Esta seguro de eliminar este libro?',
             // text: "la eliminación es !",     
@@ -190,9 +95,7 @@ const Libro = ({libro}) => {
     }
 
     const libroDevolver = id => {
-        // if(categoria.length > 0) {
-        //    <p>{mensaje}</p>
-        // }
+     
         Swal.fire({
             title: 'Confirmas la deveolucion de este libro?',
             // text: "la eliminación es !",     
@@ -215,31 +118,36 @@ const Libro = ({libro}) => {
         console.log(id);
     }
 
+    
+
     return (
         <Fragment>
             
             <tbody >
                     <tr>
-                        <td> {libro.nombre} </td>
-                        <td> {libro.descripcion} </td>
-                        <td> {libro.categoria_id} </td>
-                        <td> {libro.persona_id} </td>
+                        <td> {nombre} </td>
+                        <td> {descripcion} </td>
+                        <td> {nuevoCat} </td>
+                        <td> {nuevoAlias} </td>
+                        
+                             
+                          
                         
                         
                         <td>
-                <IconButton aria-label="edit" color="primary" onClick={handleOpen}>
+                <IconButton aria-label="edit" color="primary" >
                     <EditIcon/>
                 </IconButton>
                         </td>
                         
-                    <Modal
+                    {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                         >
                     {body}
-                    </Modal>
+                    </Modal> */}
                     <td>
                 <IconButton aria-label="delete" color="secondary"
                     onClick={() => libroEliminar(libro.id)}>
@@ -248,19 +156,19 @@ const Libro = ({libro}) => {
                         </td>
 
                         <td>
-                <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
+                <IconButton aria-label="prestar" color="primary" >
                     <VerticalAlignTopIcon/>
                 </IconButton>
                         </td>
                         
-                    <Modal
+                    {/* <Modal
                         open={open}
                         onClose={handleClose}
                         aria-labelledby="simple-modal-title"
                         aria-describedby="simple-modal-description"
                         >
                     {bodyPrestar}
-                    </Modal>
+                    </Modal> */}
 
                     <td>
                 <IconButton aria-label="devolver" color="secondary"

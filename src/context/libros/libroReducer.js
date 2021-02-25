@@ -37,8 +37,8 @@ export default (state,action) => {
         case DEVOLVER_LIBRO :
             return {
                 ...state,
-                libros: state.libros.filter(libro => libro.id == action.payload),
-                persona_id: null, //reinicio
+                libros: state.libros.filter(libro => libro.persona_id == action.payload),
+                //persona_id: null, //reinicio
             }
         case PRESTAR_LIBRO :
             return {
