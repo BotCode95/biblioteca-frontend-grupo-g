@@ -111,8 +111,7 @@ const NuevoLibro = () => {
                             value={categoria_id}
                             onChange= {actualizarState}
                         />  
-
-                       
+                    
 
              <select
                             onChange={actualizarState}
