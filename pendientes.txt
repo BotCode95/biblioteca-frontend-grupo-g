@@ -8,6 +8,9 @@ Persona
 (PENDIENTE)
 Se tiene que poder ver los libros que tiene una persona prestados (es decir, los libros que le preste)
 
+(PENDIENTE)
+Si la persona no tiene libros que el boton de libro aparezca apagado
+
 
 
 Generos
@@ -18,7 +21,7 @@ Generos
 
 
 * Se tiene que poder ver todos los libros de un genero, puede ser una funcionalidad extra en el listado/card del punto anterior o bien otra pantalla donde se seleccione el genero y muestren los libros
-(PENDIENTE)
+(PENDIENTE) MODAL con SELECT 
 
 
 

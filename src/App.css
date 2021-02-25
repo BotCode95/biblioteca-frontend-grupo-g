@@ -1,7 +1,7 @@
-/* 
+/*  
  *{
   border:1px solid black
-}  */
+}   */
 :root {
   --main-color: #F2C230;
   --gris1: #edf2f6;
@@ -60,7 +60,7 @@ a {
   /* width: 1200px; */
   display: flex;
   justify-content: center;
-  align-items: left;
+  align-items: center;
 }
 
 .imagen-div{
@@ -78,7 +78,7 @@ a {
   font-size: 5rem;
   text-align: left;
   margin-left: 2rem;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   color:white
   /* padding-top: 2rem; */
 }
@@ -278,4 +278,8 @@ nav {
 
 .alerta-ok {
   background-color: green;
+}
+
+.texto-modal{
+  color: white;
 }

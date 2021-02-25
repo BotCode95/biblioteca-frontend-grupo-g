@@ -5,6 +5,7 @@ import libroContext from '../../context/libros/libroContext';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
@@ -34,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//FIN MODAL
 
 const Persona = ({persona}) => {
     const history = useHistory();
@@ -48,23 +48,21 @@ const Persona = ({persona}) => {
         nombreLibro: ""//aliasString //no lo puede sacarrr
     })
 
-    const nombreLibros = ()=>{
-        const nombSel = libros.filter(libro => libro.persona_id === persona.id);
-        
-        let nuevoAlias = new Array(); 
-
-        for(let i=0; i< nombSel.length; i++){
-            let item; 
+    
+        const librosSelect = libros.filter(libro => libro.persona_id === persona.id);
+        let nuevoLibros = new Array(); 
+        for(let i=0; i< librosSelect.length; i++){
+            
             //console.log(nombSel[i].alias);
-            let alias = nombSel[i].nombre;
-            nuevoAlias.push(alias);
+            let nombreLibro = librosSelect[i].nombre;
+            nuevoLibros.push(nombreLibro);
            
         }
-        console.log(nuevoAlias.toString());
-        let aliasString = (nuevoAlias.toString());
-        return aliasString;
-    }
-    nombreLibros();
+        // console.log(nuevoAlias.toString());
+        // let aliasString = (nuevoAlias.toString());
+        // return aliasString;
+    
+   
 
 //MODAL
     const classes = useStyles();
@@ -80,15 +78,18 @@ const Persona = ({persona}) => {
       setOpen(false);
     };
     
+
     const body = (
         <div style={modalStyle} className={classes.paper}>
          <div className="contenedor-form">
-            <h1>Libros</h1>                            
-                <div>
-                    <p>
-                    {libroPersona.nombreLibro}
-                    </p>
-                </div>                    
+            <h1>Libros</h1>      
+                <div >                      
+                    {nuevoLibros.map(newLibros=>(
+                    <li className="texto-modal">
+                    {newLibros}
+                    </li>                                   
+                    ))}
+                </div>
         </div>
       </div>
     );
@@ -125,7 +126,7 @@ const Persona = ({persona}) => {
                             
                         <td>
                             <IconButton aria-label="prestados" color="primary" onClick={handleOpen}>
-                             <EditIcon />                             
+                             <MenuBookIcon />                             
                             </IconButton>                            
                         </td>
                         <Modal

@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 import libroContext from '../../context/libros/libroContext';
 import personaContext from '../../context/personas/personaContext'
+import categoriaContext from '../../context/categorias/categoriaContext'
 
 import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,42 +15,60 @@ import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 const Libro = ({libro}) => {
 
     const {nombre, descripcion, persona_id, categoria_id} = libro; 
-    //console.log(libro);
-
-    
+       
     const librosContext = useContext(libroContext)
     const {actualizarLibro, agregarlibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
     
     const personasContext = useContext(personaContext)
     const { obtenerPersonas, personas } = personasContext;
+
+    const categoriasContext = useContext(categoriaContext)
+    const { categorias } = categoriasContext;
     
     
 
-    const nombrePers = ()=>{
-        const nombSel = personas.filter(persona => persona.id === persona_id);
+    // const nombrePers = ()=>{
+    //     const nombSel = personas.filter(persona => persona.id === persona_id);
         
-        let nuevoAlias = new Array(); 
+    //     let nuevoAlias = new Array(); 
 
-        for(let i=0; i< nombSel.length; i++){
-            let item; 
-            //console.log(nombSel[i].alias);
-            let alias = nombSel[i].alias;
-            nuevoAlias.push(alias);
+    //     for(let i=0; i< nombSel.length; i++){
+    //         let item; 
+    //         //console.log(nombSel[i].alias);
+    //         let alias = nombSel[i].alias;
+    //         nuevoAlias.push(alias);
            
-        }
-        console.log(nuevoAlias.toString());
-        let aliasString = (nuevoAlias.toString());
-        return aliasString;
-    }
-    nombrePers();
+    //     }
+    //     console.log(nuevoAlias.toString());
+    //     let aliasString = (nuevoAlias.toString());
+    //     return aliasString;
+    // }
+    // nombrePers();
     
-    
+    const nombSel = personas.filter(persona => persona.id === persona_id)
+    let nuevoAlias = new Array(); 
+
+         for(let i=0; i< nombSel.length; i++){
+                         
+             let alias = nombSel[i].alias;
+             nuevoAlias.push(alias);
+         }
     
     const seleccionarLibro = id => {
         libroActual(id);
     }
 
-  
+    const nombCat = categorias.filter(categoria => categoria.id === categoria_id)
+    console.log(nombCat);
+
+    
+    let nuevoCat = new Array(); 
+
+         for(let i=0; i< nombCat.length; i++){
+                         
+             let catNom = nombCat[i].nombre;
+             nuevoCat.push(catNom);
+         }
 
      const libroEliminar = id => {
       
@@ -108,8 +127,11 @@ const Libro = ({libro}) => {
                     <tr>
                         <td> {nombre} </td>
                         <td> {descripcion} </td>
-                        <td> {categoria_id} </td>
-                        <td> {} </td>
+                        <td> {nuevoCat} </td>
+                        <td> {nuevoAlias} </td>
+                        
+                             
+                          
                         
                         
                         <td>

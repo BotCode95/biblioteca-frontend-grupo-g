@@ -103,7 +103,7 @@ const LibroState = (props) => {
     }
     const prestarLibro = async (libroId) => {
         try {
-            const contenido = await clienteAxios.put(`/libro/${libroId}`);
+            const contenido = await clienteAxios.put(`/libro/prestar/${libroId}`);
             console.log(contenido)
             dispatch({
                 type: PRESTAR_LIBRO,
