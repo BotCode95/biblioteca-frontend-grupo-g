@@ -69,12 +69,15 @@ const Libro = ({libro}) => {
   const categoriasContext = useContext(categoriaContext)
   const { categorias, categoria } = categoriasContext;
 
-  const [libroPrestar, setLibroPrestar] = useState({
-    nombre: "",
-    descripcion: "",
-    categoria_id: null,
-    persona_id: null
-  })
+  // const [libroPrestar, setLibroPrestar] = useState({
+  //   nombre: "",
+  //   descripcion: "",
+  //   categoria_id: null,
+  //   persona_id: null
+  // })
+
+  
+  const [libroPrestar, setLibroPrestar] = useState(libro)
 
   
   useEffect(() => {
@@ -85,15 +88,16 @@ const Libro = ({libro}) => {
   const actualizarState = e =>{
     setLibroPrestar({
         ...libroPrestar,
-        [e.target.name] : e.target.value
+        persona_id : e.target.value
+        //[e.target.name] : e.target.value,
     })
   }
 
-  const handleSubmit = e =>{
+  const handleSubmit =  e =>{
     e.preventDefault();
     // libroPrestar
-      prestarLibro(libroPrestar);
-      console.log(prestarLibro(libroPrestar));
+    prestarLibro(libroPrestar);
+    console.log(prestarLibro(libroPrestar));
   }
 
 
