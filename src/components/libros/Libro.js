@@ -10,22 +10,126 @@ import EditIcon from '@material-ui/icons/Edit';
 import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
 import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
 
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
 const Libro = ({libro}) => {
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+  const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
 
-    const {nombre, descripcion, persona_id, categoria_id} = libro; 
+
+
+  
+  const {nombre, descripcion, persona_id, categoria_id} = libro;
+  
        
-    const librosContext = useContext(libroContext)
-    const {actualizarLibro, agregarlibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
-    
-    const personasContext = useContext(personaContext)
-    const { obtenerPersonas, personas } = personasContext;
+  const librosContext = useContext(libroContext)
+  const {actualizarLibro, prestarLibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
 
-    const categoriasContext = useContext(categoriaContext)
-    const { categorias } = categoriasContext;
+  const handleOpen = () => {
+    setOpen(true);
+    libroActual(libro)
+    console.log(libro)
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  
+  const personasContext = useContext(personaContext)
+  const { obtenerPersonas, personas, persona} = personasContext;
+
+  const categoriasContext = useContext(categoriaContext)
+  const { categorias, categoria } = categoriasContext;
+
+  const [libroPrestar, setLibroPrestar] = useState({
+    nombre: "",
+    descripcion: "",
+    categoria_id: null,
+    persona_id: null
+  })
+
+  
+  useEffect(() => {
+    setLibroPrestar(libro);
     
+},[libro]);
+
+  const actualizarState = e =>{
+    setLibroPrestar({
+        ...libroPrestar,
+        [e.target.name] : e.target.value
+    })
+  }
+
+  const handleSubmit = e =>{
+    e.preventDefault();
+    // libroPrestar
+      prestarLibro(libroPrestar);
+      console.log(prestarLibro(libroPrestar));
+  }
+
+
+  const body = (
+      <div style={modalStyle} className={classes.paper}>
+       <div className="contenedor-form">
+              <h1>Libros a prestar</h1>
+              <form 
+                  onSubmit={handleSubmit}
+                  className="form"
+              >
+              <label>Seleccione la persona</label>
+              <select
+                  onChange={actualizarState}
+                  value={libroPrestar.persona_id} 
+                  // persona.id
+              >
+                  <option value="">-Seleccione-</option>
+                  {personas.map(persona => (
+                      <option key={persona.id} value={persona.id} >{persona.nombre}</option>
+                  ))}
+            </select>
+                  <div>
+                      <input
+                          type="submit"
+                          className="boton-submit"
+                          value="Prestar"/>
+                  </div>
+              </form>
+          </div>
+    </div>
+  );
+
+  
     
+  
 
     // const nombrePers = ()=>{
     //     const nombSel = personas.filter(persona => persona.id === persona_id);
@@ -46,7 +150,7 @@ const Libro = ({libro}) => {
     // nombrePers();
     
     const nombSel = personas.filter(persona => persona.id === persona_id)
-    let nuevoAlias = new Array(); 
+    let nuevoAlias = []; 
 
          for(let i=0; i< nombSel.length; i++){
                          
@@ -54,16 +158,15 @@ const Libro = ({libro}) => {
              nuevoAlias.push(alias);
          }
     
-    const seleccionarLibro = id => {
-        libroActual(id);
-    }
+    // const seleccionarLibro = id => {
+    //     libroActual(id);
+    // }
 
     const nombCat = categorias.filter(categoria => categoria.id === categoria_id)
-    console.log(nombCat);
+    // console.log(nombCat);
 
     
-    let nuevoCat = new Array(); 
-
+    let nuevoCat = []; 
          for(let i=0; i< nombCat.length; i++){
                          
              let catNom = nombCat[i].nombre;
@@ -121,67 +224,46 @@ const Libro = ({libro}) => {
     
 
     return (
-        <Fragment>
-            
-            <tbody >
-                    <tr>
-                        <td> {nombre} </td>
-                        <td> {descripcion} </td>
-                        <td> {nuevoCat} </td>
-                        <td> {nuevoAlias} </td>
-                        
-                             
-                          
-                        
-                        
-                        <td>
-                <IconButton aria-label="edit" color="primary" >
-                    <EditIcon/>
-                </IconButton>
-                        </td>
-                        
-                    {/* <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        >
-                    {body}
-                    </Modal> */}
-                    <td>
-                <IconButton aria-label="delete" color="secondary"
-                    onClick={() => libroEliminar(libro.id)}>
-                    <DeleteIcon/>
-                </IconButton>
-                        </td>
+      <Fragment>
+        <tbody>
+          <tr>
+            <td> {nombre} </td>
+            <td> {descripcion} </td>
+            <td> {nuevoCat} </td>
+            <td> {nuevoAlias} </td>
+            <td>
+              <IconButton aria-label="edit" color="primary" >
+                  <EditIcon/>
+              </IconButton>
+            </td>
+            <td>
+              <IconButton aria-label="delete" color="secondary"
+                  onClick={() => libroEliminar(libro.id)}>
+                  <DeleteIcon/>
+              </IconButton>
+            </td>
 
-                        <td>
-                <IconButton aria-label="prestar" color="primary" >
-                    <VerticalAlignTopIcon/>
-                </IconButton>
-                        </td>
-                        
-                    {/* <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        >
-                    {bodyPrestar}
-                    </Modal> */}
-
-                    <td>
-                <IconButton aria-label="devolver" color="secondary"
-                    onClick={() => libroDevolver(libro.id)}>
-                    <VerticalAlignBottomIcon/>
-                </IconButton>
-                        </td>                  
-            
-                    </tr>                    
-                </tbody>       
-            
-        
-        </Fragment>
+            <td>
+              <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
+                  <VerticalAlignTopIcon/>
+              </IconButton>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                >
+                {body}
+              </Modal>
+            </td>
+            <td>
+              <IconButton aria-label="devolver" color="secondary" onClick={() => libroDevolver(libro.id)}>
+                  <VerticalAlignBottomIcon />
+              </IconButton>
+            </td>  
+          </tr>                    
+        </tbody>     
+      </Fragment>
     )
 }
 

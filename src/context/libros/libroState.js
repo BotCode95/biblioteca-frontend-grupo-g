@@ -47,10 +47,10 @@ const LibroState = (props) => {
             console.log(error)
         }
     }
-    const libroActual = libroId => {
+    const libroActual = libro => {
         dispatch({
             type: LIBRO_ACTUAL,
-            payload: libroId
+            payload: libro
         })
     }
     const eliminarLibro = async (libroId) => {
@@ -89,9 +89,6 @@ const LibroState = (props) => {
             dispatch({
                 type: DEVOLVER_LIBRO,
                 payload: null,
-                
-                
-                // persona_id:"null"
             })
         } catch (error) {
             console.log(error);
@@ -101,13 +98,14 @@ const LibroState = (props) => {
             })
         }
     }
-    const prestarLibro = async (libroId) => {
+    const prestarLibro = async (libro) => {
         try {
-            const contenido = await clienteAxios.put(`/libro/prestar/${libroId}`);
+            const contenido = await clienteAxios.put(`/libro/prestar/${libro.id}`, libro);
             console.log(contenido)
             dispatch({
                 type: PRESTAR_LIBRO,
-                payload: libroId
+                payload: contenido.data.libro
+                //contenido.data.response.libro
             })
         } catch (error) {
             console.log(error);
@@ -117,6 +115,23 @@ const LibroState = (props) => {
             })
         }
     }
+    // const prestarLibro = async (libroId) => {
+    //     try {
+    //         const contenido = await clienteAxios.put(`/libro/prestar/${libroId}`);
+    //         console.log(contenido)
+    //         dispatch({
+    //             type: PRESTAR_LIBRO,
+    //             payload: libroId
+    //         })
+    //     } catch (error) {
+    //         console.log(error);
+    //         dispatch({
+    //             type: ERROR_LIBRO,
+    //             payload: error.response.data.Error
+    //         })
+    //     }
+    // }
+  
     return (  
         <libroContext.Provider
             value={{
