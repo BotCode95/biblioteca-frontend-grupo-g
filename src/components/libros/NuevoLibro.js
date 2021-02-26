@@ -123,8 +123,7 @@ const NuevoLibro = () => {
                 </div>
                 <div>
                     <br/><br/>
-                    <label htmlFor="categoria_id">Categoria   </label> 
-              
+                    <label htmlFor="categoria_id">Categoria   </label>              
                     <select
                             onChange={actualizarStateCategoria}                                            
                             value={categoria_id}                        
