@@ -42,7 +42,8 @@ export default (state,action) => {
         case PRESTAR_LIBRO :
             return {
                 ...state,
-                libros: state.libros.map(libro => libro.id === action.payload)//state.libros.map(libro => libro.persona_id === action.payload), //libro.id && puede ser filter
+                //libros: state.libros.filter(libro => libro.id === action.payload)//state.libros.map(libro => libro.persona_id === action.payload), //libro.id && puede ser filter
+                libro: state.libros.filter(libro => libro.id === action.payload)
             }
         default: 
            return state;
