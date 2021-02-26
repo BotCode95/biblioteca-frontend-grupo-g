@@ -7,8 +7,9 @@ import Swal from 'sweetalert2';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
-import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import PublishIcon from '@material-ui/icons/Publish';
+
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -40,15 +41,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Libro = ({libro}) => {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
+  
   const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
-
-
-
   
-  const {nombre, descripcion, persona_id, categoria_id} = libro;
-  
+  const {nombre, descripcion, persona_id, categoria_id} = libro;  
        
   const librosContext = useContext(libroContext)
   const {actualizarLibro, prestarLibro, libroActual, eliminarLibro, devolverLibro} = librosContext;
@@ -95,6 +92,7 @@ const Libro = ({libro}) => {
 
   const handleSubmit =  e =>{
     e.preventDefault();
+    setOpen(false)
     // libroPrestar
     prestarLibro(libroPrestar);
     console.log(prestarLibro(libroPrestar));
@@ -249,7 +247,7 @@ const Libro = ({libro}) => {
 
             <td>
               <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
-                  <VerticalAlignTopIcon/>
+                  <PublishIcon/>
               </IconButton>
               <Modal
                 open={open}
@@ -262,7 +260,7 @@ const Libro = ({libro}) => {
             </td>
             <td>
               <IconButton aria-label="devolver" color="secondary" onClick={() => libroDevolver(libro.id)}>
-                  <VerticalAlignBottomIcon />
+                  <GetAppIcon/>
               </IconButton>
             </td>  
           </tr>                    
