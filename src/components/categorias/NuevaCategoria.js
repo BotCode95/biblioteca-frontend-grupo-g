@@ -5,15 +5,16 @@ import Layout from '../../components/layout/Layout'
 import categoriaContext from '../../context/categorias/categoriaContext'
 import alertaContext from '../../context/alertas/alertaContext'
 
-    const NuevaCategoria = () => {
+const NuevaCategoria = () => {
     const history= useHistory()
+
     const categoriasContext = useContext(categoriaContext);
     const {mensaje, agregarCategoria} = categoriasContext;
 
     const alertas = useContext(alertaContext);
     const {alerta, mostrarAlerta} = alertas; 
 
-     const [categoria, setCategoria] = useState({
+    const [categoria, setCategoria] = useState({
         nombre: ''
     });
 
@@ -24,7 +25,7 @@ import alertaContext from '../../context/alertas/alertaContext'
             mostrarAlerta(mensaje.mensaje, mensaje.tipo)
         }
     }, [mensaje])
-
+   
     const onChange = e => {
         setCategoria({
             ...categoria,
@@ -33,22 +34,18 @@ import alertaContext from '../../context/alertas/alertaContext'
     }
     const submitCategoria = e => {
         e.preventDefault();
-        if(nombre.trim() === ''){
-            console.log('El nombre esta vacio');
-        }
-        console.log('Enviado');
         agregarCategoria(categoria);
-
+        
         setCategoria({
             nombre: ''
         })
-
-        history.push('/listado-categoria');
+        if(nombre.length > 0) {
+            history.push('/listado-categoria');
+        }
     }
     return (
         <>
         <Layout/>
-
         <div className="container">
             <div className="contenedor-form">
                 <h1>Nueva Categoría</h1>
@@ -74,6 +71,7 @@ import alertaContext from '../../context/alertas/alertaContext'
                             className="boton-submit"
                             value="Agregar Categoría"/>
                     </div>
+                        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
                 </form>
             </div>
             <div>
@@ -84,8 +82,6 @@ import alertaContext from '../../context/alertas/alertaContext'
                     />
             </div>
         </div>
-        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
-        
         </>
     )
 }

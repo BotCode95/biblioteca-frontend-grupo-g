@@ -272,12 +272,24 @@ nav {
   text-align: left;
   padding: 0 30px;  
 }
-.alerta-error{
-  background-color: red;
-}
 
 .alerta-ok {
-  background-color: green;
+  background-color: rgb(109, 211, 109);
+  color: rgb(2, 103, 2);
+}
+.alerta{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  text-transform: uppercase;
+  height: 30px;
+  text-align: center;
+  margin-top: 2rem;
+}
+.categoria-error {
+  background-color:red;
+  color:white;
 }
 
 .texto-modal{

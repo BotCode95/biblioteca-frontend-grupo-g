@@ -8,11 +8,10 @@ import categoriaContext from '../../context/categorias/categoriaContext'
 const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
-    const {libros, obtenerLibros} = librosContext;
+    const {libro,libros, obtenerLibros} = librosContext;
     
-
     const personasContext = useContext(personaContext)
-    const {personas, obtenerPersonas} = personasContext;
+    const {obtenerPersonas} = personasContext;
 
     const categoriasContext = useContext(categoriaContext)
     const { obtenerCategorias } = categoriasContext;
@@ -22,35 +21,31 @@ const ListadoLibro = () => {
         obtenerLibros();
         obtenerPersonas();
         obtenerCategorias();
-    },[])
+    },[libro])
     
-    // console.log(personas)
     return(
         <>
         <Layout/>
         <h1 className="text-titulo">Listado de Libros</h1>
         <table className="tabla-persona">
-                <thead className="tabla-head">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Descripcion</th>
-                            <th>Categoria</th>
-                            <th>Prestado</th>
-                            <th>Editar</th>
-                            <th>Borrar</th>
-                            <th>Prestar</th>
-                            <th>Devolver</th>
-                        </tr>
-                </thead>
-                {libros.map(libro => (
-                    <Libro
-                        key = {libro.id}
-                        libro = {libro}
-                        
-                        
-                        
-                    />
-                ))}
+            <thead className="tabla-head">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Categoria</th>
+                    <th>Prestado</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                    <th>Prestar</th>
+                    <th>Devolver</th>
+                </tr>
+            </thead>
+            {libros.map(libro => (
+                <Libro
+                    key = {libro.id}
+                    libro = {libro}  
+                />
+            ))}
         </table>
         </>
     )

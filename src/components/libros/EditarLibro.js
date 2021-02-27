@@ -3,38 +3,30 @@ import {useHistory} from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 import libroContext from '../../context/libros/libroContext';
 import categoriaContext from '../../context/categorias/categoriaContext'
-import personaContext from '../../context/personas/personaContext'
 
-const NuevoLibro = () => {
+const EditarLibro = () => {
     const history = useHistory();
     const librosContext = useContext(libroContext);
-    const {agregarLibro} = librosContext;
+    const {actualizarLibro, libroSeleccionado} = librosContext;
 
     const categoriasContext = useContext(categoriaContext);
     const {categoria,categorias, obtenerCategorias} = categoriasContext;
-
-    const personasContext = useContext(personaContext);
-    const {persona,personas, obtenerPersonas} = personasContext;
 
     const [libro, setLibros ] = useState({
         nombre:"",
         descripcion:"",  
         categoria_id:null,
-        persona_id:null
     });
 
     useEffect(() => {
+        setLibros(libroSeleccionado)
         if(categoria == null){
             obtenerCategorias();
         }
-        if(persona == null){
-            obtenerPersonas();
-        }
         // eslint-disable-next
-    },[categoria, persona])
+    },[categoria,libroSeleccionado])
 
-    const { nombre, descripcion, categoria_id, persona_id } = libro;
-
+    
     const actualizarState = e =>{
         setLibros({
             ...libro,  
@@ -42,26 +34,19 @@ const NuevoLibro = () => {
         })
     }
 
-     const actualizarStateCategoria = e =>{
+    const actualizarStateCategoria = e =>{
         setLibros({
             ...libro, 
-           categoria_id : e.target.value
+            categoria_id : e.target.value
         })
     }
 
-    const actualizarStatePersona = e =>{
-        setLibros({
-            ...libro,  
-           persona_id : e.target.value
-        })
-    }
-
+    const { nombre, descripcion, categoria_id } = libro;
+    
     const handleSubmit = e =>{
        e.preventDefault();
-
-       agregarLibro(libro);
-       history.push('/listado-libro')    
-        
+       actualizarLibro(libro)
+       history.push('/listado-libro')  
     }
     return ( 
         <Fragment>
@@ -103,20 +88,7 @@ const NuevoLibro = () => {
                                         <option key={categoria.id} value={categoria.id}>{categoria.nombre}</option>
                                     ))}
                             </select>      
-                        </div>        
-                        <div>
-                            <label htmlFor="persona_id">Persona:</label>
-                                <select
-                                    onChange={actualizarStatePersona}                                           
-                                    value={persona_id}  
-                                    className="form-input"                  
-                                >
-                                    <option value=" ">-Seleccione-</option>
-                                    {personas.map(persona => (
-                                        <option key={persona.id} value={persona.id}>{persona.nombre}</option>
-                                    ))}
-                                </select>  
-                        </div>              
+                        </div>  
                         <div>
                             <input
                                 type ="submit"
@@ -130,4 +102,4 @@ const NuevoLibro = () => {
         </Fragment>
      );
 }
-export default NuevoLibro;
+export default EditarLibro;
