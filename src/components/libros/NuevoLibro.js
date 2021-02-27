@@ -68,7 +68,7 @@ const NuevoLibro = () => {
             <Layout/>
             <div className="container">
                 <div className="contenedor-form">
-                    <h1>Nueva Libro</h1>
+                    <h1>Nuevo Libro</h1>
                     <form onSubmit= {handleSubmit}
                     className="form">
                         <div>

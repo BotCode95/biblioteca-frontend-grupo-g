@@ -7,7 +7,7 @@ import {
     CATEGORIA_ACTUAL, 
     ELIMINAR_CATEGORIA,
     ERROR_CATEGORIA,
-    MENSAJE_NULL
+    MENSAJE_NULL,
 } from '../../types';
 import clienteAxios from '../../config/axios';
 
@@ -30,7 +30,7 @@ const CategoriaState = (props) => {
         } catch (error) {
             const alerta = {
                 mensaje: error.response.data.Error,
-                tipo: 'categoria-error'
+                tipo: 'error'
             }
             dispatch({
                 type: ERROR_CATEGORIA,
@@ -57,6 +57,7 @@ const CategoriaState = (props) => {
     }
 
     const eliminarCategoria = async categoriaId => {
+
         try {
             await clienteAxios.delete(`/categoria/${categoriaId}`);
             dispatch({
@@ -64,9 +65,13 @@ const CategoriaState = (props) => {
                 payload: categoriaId
             })
         } catch (error) {
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'error'
+            }
             dispatch({
                 type: ERROR_CATEGORIA,
-                payload: error.response.data.Error
+                payload: alerta
             })
         }
     }
