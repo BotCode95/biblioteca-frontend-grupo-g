@@ -213,8 +213,9 @@ const Libro = ({libro}) => {
               </IconButton>
             </td>
             <td>
-              <IconButton aria-label="prestar" color="primary" onClick={handleOpen}>
-                  <PublishIcon/>
+              <IconButton aria-label="prestar" >
+                {nuevoAlias.length > 0 ? <PublishIcon color="disabled"/> : <PublishIcon color="primary" onClick={handleOpen}/>}
+                  {/* <PublishIcon/> */}
               </IconButton>
               <Modal
                 open={open}
@@ -226,8 +227,9 @@ const Libro = ({libro}) => {
               </Modal>
             </td>
             <td>
-              <IconButton aria-label="devolver" onClick={() => libroDevolver(libro.id)}>
-                  <GetAppIcon style={{ color: green[500] }}/>
+              <IconButton aria-label="devolver">
+              {nuevoAlias.length > 0 ? <GetAppIcon style={{ color: green[500] }} onClick={() => libroDevolver(libro.id)}/>  :  <GetAppIcon color="disabled"/> }
+                  {/* <GetAppIcon /> */}
               </IconButton>
             </td>  
           </tr>                    

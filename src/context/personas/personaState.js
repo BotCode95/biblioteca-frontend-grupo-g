@@ -53,10 +53,13 @@ const PersonaState = (props) => {
                 payload: personaId
             })
         } catch (error) {
-            console.log(error);
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'error'
+            }
             dispatch({
                 type: ERROR_PERSONA,
-                payload: error.response.data.Error
+                payload: alerta
             })
         }
     }

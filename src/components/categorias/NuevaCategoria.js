@@ -35,10 +35,6 @@ const NuevaCategoria = () => {
     const submitCategoria = e => {
         e.preventDefault();
         agregarCategoria(categoria);
-        
-        setCategoria({
-            nombre: ''
-        })
         if(nombre.length > 0) {
             history.push('/listado-categoria');
         }

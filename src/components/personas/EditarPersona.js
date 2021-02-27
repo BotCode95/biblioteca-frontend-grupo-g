@@ -15,7 +15,6 @@ const EditarPersona = () => {
         email:""
     });
     
-    
     useEffect(() => {
         setPersonas(personaSeleccionada);
         
@@ -45,7 +44,7 @@ const EditarPersona = () => {
                     <form onSubmit= {handleSubmit}
                         className="form">
                         <div>
-                            <label htmlFor="nombre">Nombre</label>
+                            <label htmlFor="nombre">Nombre:</label>
                             <input 
                                 type="text" 
                                 name="nombre"
@@ -55,7 +54,7 @@ const EditarPersona = () => {
                             />               
                         </div>
                         <div>
-                            <label htmlFor="apellido">Apellido</label>
+                            <label htmlFor="apellido">Apellido:</label>
                             <input 
                                 type="text" 
                                 name="apellido"
@@ -65,7 +64,7 @@ const EditarPersona = () => {
                             />       
                         </div>
                         <div>
-                            <label htmlFor="alias">Alias</label>
+                            <label htmlFor="alias">Alias:</label>
                             <input 
                                 type="text" 
                                 name="alias"
@@ -75,7 +74,7 @@ const EditarPersona = () => {
                             />               
                         </div>        
                         <div>
-                            <label htmlFor="email">email</label>
+                            <label htmlFor="email">Email:</label>
                             <input 
                                 type="text" 
                                 name="email"

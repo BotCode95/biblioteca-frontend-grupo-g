@@ -52,7 +52,6 @@ const Persona = ({persona}) => {
       }
 //MODAL
     const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = useState(getModalStyle);
     const [open, setOpen] = useState(false);
 
@@ -108,8 +107,8 @@ const Persona = ({persona}) => {
                   </td>
                       
                   <td>
-                      <IconButton aria-label="prestados" color="primary" onClick={handleOpen}>
-                        <MenuBookIcon />                             
+                      <IconButton aria-label="prestados">
+                      {nuevoLibros.length > 0 ? <MenuBookIcon color="primary" onClick={handleOpen}/>  :  <MenuBookIcon color="disabled"/> }
                       </IconButton>                            
                   </td>
                   <Modal

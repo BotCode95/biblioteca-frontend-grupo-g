@@ -33,7 +33,7 @@ const LibroState = (props) => {
         } catch (error) {
             const alerta = {
                 mensaje: error.response.data.Error,
-                tipo: 'libro-error'
+                tipo: 'error'
             }
             dispatch({
                 type: ERROR_LIBRO,

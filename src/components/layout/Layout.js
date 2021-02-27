@@ -5,9 +5,8 @@ import Navegacion from './Navegacion'
 const Layout = () => {
     return (
         <div className="container-layout">
-                <Link to={'/'}>
-                    <h1 className="layout-text">My books</h1>
-                </Link>
+            <h1><Link to={'/'}  className="layout-text">
+                My books</Link></h1>
             <Navegacion/>
         </div>
     )
