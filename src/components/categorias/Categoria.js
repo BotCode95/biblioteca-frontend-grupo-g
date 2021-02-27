@@ -22,8 +22,50 @@ const Categoria = ({categoria}) => {
         categoriaActual(id);
     }
 
-    const categoriaEliminar = id => {
-        Swal.fire({
+    // const categoriaEliminar = id => {
+    //   Swal.fire({
+    //     title: 'Sweet!',
+    //     confirmButtonText: 'Si'
+    //   }).then((result) => {
+    //     if(result.value){
+    //       eliminarCategoria(id);
+    //     }
+    //       Swal.fire({
+    //         title: 'Esta seguro de eliminar la categoría?',
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         cancelButtonText: 'Cancelar',
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Si'
+    //       })     
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       if(mensaje){
+    //         Swal.fire(
+    //           'Error!',
+    //           `${mensaje}`,
+    //           'reject'
+    //         )
+    //       limpiarMensaje();
+    //     }
+    //     eliminarCategoria(id);
+    //     Swal.fire(
+    //       'Eliminado!',
+    //       'La categoría fue eliminada.',
+    //       'success'
+    //     )
+    //   }
+    //   })
+    //   }
+
+      const categoriaEliminar = id => {
+        setTimeout(() => {
+          if(!mensaje) {
+            eliminarCategoria(id)
+          }
+        },1000)
+          Swal.fire({
             title: 'Esta seguro de eliminar la categoría?',
             icon: 'warning',
             showCancelButton: true,
@@ -33,24 +75,22 @@ const Categoria = ({categoria}) => {
             confirmButtonText: 'Si'
           }).then((result) => {
             if (result.isConfirmed) {
-              if(mensaje){
+                if(mensaje){
+                  Swal.fire(
+                    'Error!',
+                    `${mensaje}`,
+                    'reject'
+                  )
+                  limpiarMensaje();
+                }
+                // eliminarCategoria(id);
                 Swal.fire(
-                  'Error!',
-                  `${mensaje}`,
-                  'reject'
-                )
-                limpiarMensaje();
-                return;
-              }
-              eliminarCategoria(id);
-              Swal.fire(
-                'Eliminado!',
-                'La categoría fue eliminada.',
-                'success'
-              )
-            }
+                  'Eliminado!',
+                  'La categoría fue eliminada.',
+                  'success'
+                ) }
           })
-    }
+        }
 
     return (
         <>

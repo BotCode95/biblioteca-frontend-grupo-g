@@ -53,7 +53,7 @@ const EditarLibro = () => {
             <Layout/>
             <div className="container">
                 <div className="contenedor-form">
-                    <h1>Nueva Libro</h1>
+                    <h1>Editar Libro</h1>
                     <form onSubmit= {handleSubmit}
                     className="form">
                         <div>
@@ -93,7 +93,7 @@ const EditarLibro = () => {
                             <input
                                 type ="submit"
                                 className="boton-submit"
-                                value ="Guardar"
+                                value ="Guardar Edición"
                             />
                         </div>  
                     </form>    
