@@ -4,11 +4,12 @@ import Libro from './Libro';
 import libroContext from '../../context/libros/libroContext';
 import personaContext from '../../context/personas/personaContext'
 import categoriaContext from '../../context/categorias/categoriaContext'
+import alertaContext from '../../context/alertas/alertaContext'
 
 const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
-    const {libro,libros, obtenerLibros} = librosContext;
+    const {mensaje, libro, libros, obtenerLibros} = librosContext;
     
     const personasContext = useContext(personaContext)
     const {obtenerPersonas} = personasContext;
@@ -16,6 +17,8 @@ const ListadoLibro = () => {
     const categoriasContext = useContext(categoriaContext)
     const { obtenerCategorias } = categoriasContext;
     
+    const alertas = useContext(alertaContext);
+    const {alerta, mostrarAlerta} = alertas;
     
     useEffect(() => {        
         obtenerLibros();
@@ -23,10 +26,18 @@ const ListadoLibro = () => {
         obtenerCategorias();
     },[libro])
     
+    useEffect(() => {
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
+    }, [mensaje])
+
     return(
         <>
         <Layout/>
         <h1 className="text-titulo">Listado de Libros</h1>
+        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
+        <br/>
         <table className="tabla-persona">
             <thead className="tabla-head">
                 <tr>

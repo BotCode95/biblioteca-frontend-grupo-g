@@ -1,12 +1,16 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 import {useHistory} from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 import personaContext from '../../context/personas/personaContext';
+import alertaContext from '../../context/alertas/alertaContext'
 
 const NuevaPersona = () => {
     const history = useHistory();
     const personasContext = useContext(personaContext);
-    const {agregarPersona} = personasContext;
+    const {mensaje, agregarPersona} = personasContext;
+
+    const alertas = useContext(alertaContext);
+    const {alerta, mostrarAlerta} = alertas;
 
     const [persona, setPersonas ] = useState({
         nombre:"",
@@ -17,7 +21,13 @@ const NuevaPersona = () => {
    
     const { nombre, apellido, alias, email } = persona;
     
-     const actualizarState = e =>{
+    useEffect(() => {
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
+    }, [mensaje]) 
+
+    const actualizarState = e =>{
         setPersonas({
             ...persona,
             [e.target.name] : e.target.value
@@ -86,6 +96,7 @@ const NuevaPersona = () => {
                             /> 
                         </div>
                         <div>
+                            {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
                             <input
                                 type ="submit"
                                 className="boton-submit"

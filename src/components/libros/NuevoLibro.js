@@ -4,17 +4,21 @@ import Layout from '../../components/layout/Layout'
 import libroContext from '../../context/libros/libroContext';
 import categoriaContext from '../../context/categorias/categoriaContext'
 import personaContext from '../../context/personas/personaContext'
+import alertaContext from '../../context/alertas/alertaContext'
 
 const NuevoLibro = () => {
     const history = useHistory();
     const librosContext = useContext(libroContext);
-    const {agregarLibro} = librosContext;
+    const {mensaje, agregarLibro} = librosContext;
 
     const categoriasContext = useContext(categoriaContext);
     const {categoria,categorias, obtenerCategorias} = categoriasContext;
 
     const personasContext = useContext(personaContext);
     const {persona,personas, obtenerPersonas} = personasContext;
+
+    const alertas = useContext(alertaContext);
+    const {alerta, mostrarAlerta} = alertas;
 
     const [libro, setLibros ] = useState({
         nombre:"",
@@ -31,7 +35,7 @@ const NuevoLibro = () => {
             obtenerPersonas();
         }
         // eslint-disable-next
-    },[categoria, persona])
+    },[categoria, persona]) 
 
     const { nombre, descripcion, categoria_id, persona_id } = libro;
 
@@ -63,6 +67,13 @@ const NuevoLibro = () => {
        history.push('/listado-libro')    
         
     }
+
+    useEffect(() => {
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
+    }, [mensaje]) 
+
     return ( 
         <Fragment>
             <Layout/>
@@ -118,6 +129,8 @@ const NuevoLibro = () => {
                                 </select>  
                         </div>              
                         <div>
+                            {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
+                            <br/>
                             <input
                                 type ="submit"
                                 className="boton-submit"

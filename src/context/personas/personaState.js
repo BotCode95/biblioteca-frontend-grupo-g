@@ -25,6 +25,14 @@ const PersonaState = (props) => {
             })
         } catch (error) {
             console.log(error);
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'persona-error'
+            }
+            dispatch({
+                type: ERROR_PERSONA,
+                payload: alerta
+            })
         }
     }
 
@@ -54,9 +62,13 @@ const PersonaState = (props) => {
             })
         } catch (error) {
             console.log(error);
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'persona-error'
+            }
             dispatch({
                 type: ERROR_PERSONA,
-                payload: error.response.data.Error
+                payload: alerta
             })
         }
     }

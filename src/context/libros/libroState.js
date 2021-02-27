@@ -66,9 +66,14 @@ const LibroState = (props) => {
                 payload: libroId
             })
         } catch (error) {
+            console.log(error);
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'libro-error'
+            }
             dispatch({
                 type: ERROR_LIBRO,
-                payload: error.response.data.Error
+                payload: alerta
             })
         }
     }
