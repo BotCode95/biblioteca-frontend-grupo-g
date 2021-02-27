@@ -3,23 +3,27 @@ import Layout from '../../components/layout/Layout'
 import Categoria from './Categoria'
 import categoriaContext from '../../context/categorias/categoriaContext'
 
-
 const ListadoCategoria = () => {
+
+
     const categoriasContext = useContext(categoriaContext);
     const {categoria,categorias, obtenerCategorias} = categoriasContext;
-    // parar el effect
+
     useEffect(() => {
         if(categoria == null){
             obtenerCategorias();
         }
         // eslint-disable-next
     },[categoria])
-
-    if(categorias.length === 0) return (
-        <p
-            className="msj-no-categorias"
-        >No hay categorias, podes crear una</p>
-    )
+   
+    setTimeout(() => {
+        if(categorias.length === 0) return (
+            <p
+                className="msj-no-categorias"
+            >No hay categorias, podes crear una</p>
+        )
+    },3000)
+   
     return (
         <>
         <Layout/>

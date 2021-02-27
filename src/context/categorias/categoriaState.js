@@ -7,6 +7,7 @@ import {
     CATEGORIA_ACTUAL, 
     ELIMINAR_CATEGORIA,
     ERROR_CATEGORIA,
+    MENSAJE_NULL
 } from '../../types';
 import clienteAxios from '../../config/axios';
 
@@ -76,6 +77,12 @@ const CategoriaState = (props) => {
         }
     }
 
+    const limpiarMensaje = () => {
+        dispatch({
+            type: MENSAJE_NULL
+        })
+    }
+
    
 
     return (  
@@ -88,6 +95,7 @@ const CategoriaState = (props) => {
                 obtenerCategorias,
                 categoriaActual,
                 eliminarCategoria,
+                limpiarMensaje
             }}
         >
             {props.children}

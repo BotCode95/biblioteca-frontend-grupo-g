@@ -9,6 +9,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import PublishIcon from '@material-ui/icons/Publish';
+import { green } from '@material-ui/core/colors';
 
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -259,8 +260,8 @@ const Libro = ({libro}) => {
               </Modal>
             </td>
             <td>
-              <IconButton aria-label="devolver" color="secondary" onClick={() => libroDevolver(libro.id)}>
-                  <GetAppIcon/>
+              <IconButton aria-label="devolver" onClick={() => libroDevolver(libro.id)}>
+                  <GetAppIcon style={{ color: green[500] }}/>
               </IconButton>
             </td>  
           </tr>                    

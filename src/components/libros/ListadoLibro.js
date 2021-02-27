@@ -8,11 +8,11 @@ import categoriaContext from '../../context/categorias/categoriaContext'
 const ListadoLibro = () => {
 
     const librosContext = useContext(libroContext);
-    const {libros, obtenerLibros} = librosContext;
+    const {libro,libros, obtenerLibros} = librosContext;
     
 
     const personasContext = useContext(personaContext)
-    const {personas, obtenerPersonas} = personasContext;
+    const {persona, obtenerPersonas} = personasContext;
 
     const categoriasContext = useContext(categoriaContext)
     const { obtenerCategorias } = categoriasContext;
@@ -22,7 +22,7 @@ const ListadoLibro = () => {
         obtenerLibros();
         obtenerPersonas();
         obtenerCategorias();
-    },[])
+    },[libro])
     
     // console.log(personas)
     return(

@@ -13,9 +13,6 @@ const LibroState = (props) => {
     const [state, dispatch] = useReducer(libroReducer, initialState);
 
     const agregarLibro = async libro => {
-
-        //console.log(libro);
-        
         try {
             const contenido = await clienteAxios.post('/libro', libro);
             console.log(contenido);
@@ -23,9 +20,8 @@ const LibroState = (props) => {
                 type: AGREGAR_LIBRO,
                 payload: libro
             })
-             console.log(contenido);
         } catch (error) {
-            console.log(error);const alerta = {
+            const alerta = {
                 mensaje: error.response.data.Error,
                 tipo: 'libro-error'
             }
@@ -38,7 +34,6 @@ const LibroState = (props) => {
     const obtenerLibros = async () => {
         try {
             const contenido = await clienteAxios.get('/libro')
-            //console.log(contenido);
             dispatch({
                 type: OBTENER_LIBROS,
                 payload: contenido.data.respuesta
