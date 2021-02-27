@@ -23,6 +23,7 @@ export const ACTUALIZAR_LIBRO = 'ACTUALIZAR_LIBRO';
 export const ERROR_LIBRO = 'ERROR_LIBRO';
 export const DEVOLVER_LIBRO = 'DEVOLVER_LIBRO';
 export const PRESTAR_LIBRO = 'PRESTAR_LIBRO';
+export const LIBRO_SIN_DATOS = 'LIBRO_SIN_DATOS';
 
 //Alertas
 export const MOSTRAR_ALERTA = 'MOSTRAR_ALERTA';

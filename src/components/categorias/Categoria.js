@@ -7,7 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const Categoria = ({categoria}) => {
     const alertasContext = useContext(alertaContext);
-    const {alerta,mostrarAlerta} = alertasContext;
+    const {mostrarAlerta} = alertasContext;
 
     const categoriasContext = useContext(categoriaContext)
     const {categoriaActual, eliminarCategoria, mensaje, limpiarMensaje,} = categoriasContext;

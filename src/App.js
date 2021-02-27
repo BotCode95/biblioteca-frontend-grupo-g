@@ -4,15 +4,15 @@ import PersonaState  from './context/personas/personaState';
 import CategoriaState from './context/categorias/categoriaState';
 import LibroState from './context/libros/libroState';
 import AlertaState from './context/alertas/alertaState';
-// import Layout from './components/layout/Layout';
 import Inicio from './components/layout/Title';
-import NuevaCategoria from './components/categorias/NuevaCategoria'
-import NuevaPersona from './components/personas/NuevaPersona'
-import EditarPersona from './components/personas/EditarPersona'
-import NuevoLibro from './components/libros/NuevoLibro';
 import ListadoCategoria from './components/categorias/ListadoCategoria'
+import NuevaCategoria from './components/categorias/NuevaCategoria';
 import ListadoPersona from './components/personas/ListadoPersona'
+import NuevaPersona from './components/personas/NuevaPersona';
+import EditarPersona from './components/personas/EditarPersona';
 import ListadoLibro from './components/libros/ListadoLibro';
+import NuevoLibro from './components/libros/NuevoLibro';
+import EditarLibro from './components/libros/EditarLibro';
 
 function App() {
 
@@ -30,6 +30,7 @@ function App() {
                 <Route exact path="/nueva-persona" component={NuevaPersona}/>
                 <Route exact path="/persona/:id" component={EditarPersona}/>
                 <Route exact path="/nuevo-libro" component={NuevoLibro}/>
+                <Route exact path="/libro/:id" component={EditarLibro}/>
                 <Route exact path="/listado-categoria" component={ListadoCategoria}/>
                 <Route exact path="/listado-persona" component={ListadoPersona}/>
                 <Route exact path="/listado-libro" component={ListadoLibro}/>

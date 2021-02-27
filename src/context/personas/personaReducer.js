@@ -1,5 +1,12 @@
-import {OBTENER_PERSONAS, PERSONA_ACTUAL, 
-    AGREGAR_PERSONA, ELIMINAR_PERSONA, ERROR_PERSONA, ACTUALIZAR_PERSONA, PERSONA_SIN_DATOS} from '../../types';
+import {
+    OBTENER_PERSONAS, 
+    PERSONA_ACTUAL, 
+    AGREGAR_PERSONA, 
+    ELIMINAR_PERSONA, 
+    ERROR_PERSONA, 
+    ACTUALIZAR_PERSONA, 
+    PERSONA_SIN_DATOS
+} from '../../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state,action) => {

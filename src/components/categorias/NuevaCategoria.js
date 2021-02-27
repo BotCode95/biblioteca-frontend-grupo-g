@@ -1,19 +1,20 @@
 import React,{useState, useContext, useEffect} from 'react';
-import {useHistory, Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import imagen from '../../question1.svg';
 import Layout from '../../components/layout/Layout'
 import categoriaContext from '../../context/categorias/categoriaContext'
 import alertaContext from '../../context/alertas/alertaContext'
 
-    const NuevaCategoria = (props) => {
+const NuevaCategoria = () => {
     const history= useHistory()
+
     const categoriasContext = useContext(categoriaContext);
     const {mensaje, agregarCategoria} = categoriasContext;
 
     const alertas = useContext(alertaContext);
     const {alerta, mostrarAlerta} = alertas; 
 
-     const [categoria, setCategoria] = useState({
+    const [categoria, setCategoria] = useState({
         nombre: ''
     });
 
@@ -81,7 +82,6 @@ import alertaContext from '../../context/alertas/alertaContext'
                     />
             </div>
         </div>
-        
         </>
     )
 }

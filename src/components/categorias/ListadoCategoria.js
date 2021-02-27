@@ -4,8 +4,6 @@ import Categoria from './Categoria'
 import categoriaContext from '../../context/categorias/categoriaContext'
 
 const ListadoCategoria = () => {
-
-
     const categoriasContext = useContext(categoriaContext);
     const {categoria,categorias, obtenerCategorias} = categoriasContext;
 
@@ -22,7 +20,7 @@ const ListadoCategoria = () => {
                 className="msj-no-categorias"
             >No hay categorias, podes crear una</p>
         )
-    },3000)
+    },2000)
    
     return (
         <>

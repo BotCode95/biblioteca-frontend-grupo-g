@@ -18,8 +18,7 @@ const PersonaState = (props) => {
 
     const agregarPersona = async persona => {
         try {
-            const contenido = await clienteAxios.post('/persona', persona);
-            console.log(contenido);
+            await clienteAxios.post('/persona', persona);
             dispatch({
                 type: AGREGAR_PERSONA,
                 payload: persona
@@ -32,7 +31,6 @@ const PersonaState = (props) => {
     const obtenerPersonas = async () => {
         try {
             const contenido = await clienteAxios.get('/persona');
-            console.log(contenido);
             dispatch({
                 type: OBTENER_PERSONAS,
                 payload: contenido.data.Respuesta
@@ -41,23 +39,15 @@ const PersonaState = (props) => {
             console.log(error);
         }
     }
-
-    // const personaActual = personaId => {
-    //     dispatch({
-    //         type: PERSONA_ACTUAL,
-    //         payload: personaId
-    //     })
-    // }
     const personaActual = persona => {
         dispatch({
             type: PERSONA_ACTUAL,
             payload: persona
         })
     }
-    const eliminarPersona = async (personaId) => {
+    const eliminarPersona = async personaId => {
         try {
-            const contenido = await clienteAxios.delete(`/persona/${personaId}`);
-            console.log(contenido)
+            await clienteAxios.delete(`/persona/${personaId}`);
             dispatch({
                 type: ELIMINAR_PERSONA,
                 payload: personaId
@@ -74,7 +64,6 @@ const PersonaState = (props) => {
     const actualizarPersona = async persona => {
         try {
             const contenido = await clienteAxios.put(`/persona/${persona.id}`, persona);
-            console.log(contenido);
             dispatch({
                 type: ACTUALIZAR_PERSONA,
                 payload: contenido.data.persona
@@ -102,7 +91,6 @@ const PersonaState = (props) => {
                 personaActual,
                 eliminarPersona,
                 actualizarPersona,
-                // guardarPersonaActual,
                 personaSinDatos
             }}
         >

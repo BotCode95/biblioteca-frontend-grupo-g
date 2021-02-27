@@ -15,14 +15,12 @@ const EditarPersona = () => {
         email:""
     });
     
-    // const personaeditar = personaSeleccionada;
     
     useEffect(() => {
         setPersonas(personaSeleccionada);
         
     },[personaSeleccionada]);
     
-    //Funcion que se actualiza cada vez que el usuario escribe algo
     const actualizarState = e =>{
         setPersonas({
             ...persona,
@@ -30,15 +28,12 @@ const EditarPersona = () => {
         })
     }
     
-    
     const { nombre, apellido, alias, email } = persona;
 
-    //Cuando el usuario presiona guardar
     const handleSubmit = e =>{
        e.preventDefault();
         actualizarPersona(persona);
         personaSinDatos();
-
         history.push('/listado-persona');
     }
 
@@ -48,7 +43,7 @@ const EditarPersona = () => {
             <div className="container">
                 <div className="contenedor-form">
                     <form onSubmit= {handleSubmit}
-                    className="form">
+                        className="form">
                         <div>
                             <label htmlFor="nombre">Nombre</label>
                             <input 

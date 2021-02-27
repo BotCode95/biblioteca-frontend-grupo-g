@@ -16,21 +16,18 @@ const CategoriaState = (props) => {
         categorias : [],
         categoria: null,
         mensaje: null
-        // categoriaseleccionada: null
     }
     const [state, dispatch] = useReducer(categoriaReducer, initialState);
 
     const agregarCategoria = async categoria => {
         try {
-            const contenido = await clienteAxios.post('/categoria' , categoria);
-            console.log(contenido);
+            await clienteAxios.post('/categoria' , categoria);
             dispatch({
                 type: AGREGAR_CATEGORIA,
                 payload: categoria
             })
            
         } catch (error) {
-            console.log(error);
             const alerta = {
                 mensaje: error.response.data.Error,
                 tipo: 'categoria-error'
@@ -44,7 +41,6 @@ const CategoriaState = (props) => {
     const obtenerCategorias = async () => {
         try {
             const contenido = await clienteAxios.get('/categoria')
-            // console.log(contenido);
             dispatch({
                 type: OBTENER_CATEGORIAS,
                 payload: contenido.data.respuesta
@@ -60,16 +56,14 @@ const CategoriaState = (props) => {
         })
     }
 
-    const eliminarCategoria = async (categoriaId) => {
+    const eliminarCategoria = async categoriaId => {
         try {
-            const contenido = await clienteAxios.delete(`/categoria/${categoriaId}`);
-            console.log(contenido)
+            await clienteAxios.delete(`/categoria/${categoriaId}`);
             dispatch({
                 type: ELIMINAR_CATEGORIA,
                 payload: categoriaId
             })
         } catch (error) {
-            console.log(error);
             dispatch({
                 type: ERROR_CATEGORIA,
                 payload: error.response.data.Error
@@ -82,8 +76,6 @@ const CategoriaState = (props) => {
             type: MENSAJE_NULL
         })
     }
-
-   
 
     return (  
         <categoriaContext.Provider
