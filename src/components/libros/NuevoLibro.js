@@ -4,18 +4,23 @@ import Layout from '../../components/layout/Layout'
 import libroContext from '../../context/libros/libroContext';
 import categoriaContext from '../../context/categorias/categoriaContext'
 import personaContext from '../../context/personas/personaContext'
+import alertaContext from '../../context/alertas/alertaContext'
 import imagen from '../../public/static/img/chicaleyendo.svg'
 
 const NuevoLibro = () => {
     const history = useHistory();
+
     const librosContext = useContext(libroContext);
-    const {agregarLibro} = librosContext;
+    const {agregarLibro, mensaje} = librosContext;
 
     const categoriasContext = useContext(categoriaContext);
     const {categoria,categorias, obtenerCategorias} = categoriasContext;
 
     const personasContext = useContext(personaContext);
     const {persona,personas, obtenerPersonas} = personasContext;
+
+    const alertas = useContext(alertaContext);
+    const {alerta,mostrarAlerta} = alertas; 
 
     const [libro, setLibros ] = useState({
         nombre:"",
@@ -31,8 +36,12 @@ const NuevoLibro = () => {
         if(persona == null){
             obtenerPersonas();
         }
+
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
         // eslint-disable-next
-    },[categoria, persona])
+    },[categoria, persona, mensaje])
 
     const { nombre, descripcion, categoria_id, persona_id } = libro;
 
@@ -61,7 +70,10 @@ const NuevoLibro = () => {
        e.preventDefault();
 
        agregarLibro(libro);
-       history.push('/listado-libro')    
+
+       if(nombre.length > 0) {
+        history.push('/listado-libro');   
+        }   
         
     }
     return ( 
@@ -125,11 +137,10 @@ const NuevoLibro = () => {
                                 value ="Guardar"
                             />
                         </div>  
+                        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
                     </form>    
                 </div> 
-                <div>
-                    <img className="imagen-ingrelibro" src={imagen} alt="ingreselibro"/>                
-                </div>   
+                    <img className="imagen-ingrelibro" src={imagen} alt="ingreselibro"/>   
             </div>    
         </Fragment>
      );

@@ -85,7 +85,6 @@ const Libro = ({libro}) => {
     e.preventDefault();
     setOpen(false)
     prestarLibro(libroPrestar);
-    console.log(prestarLibro(libroPrestar));
   }
 
   const body = (
@@ -116,27 +115,9 @@ const Libro = ({libro}) => {
           </div>
       </div>
   );
-    // const nombrePers = ()=>{
-    //     const nombSel = personas.filter(persona => persona.id === persona_id);
-        
-    //     let nuevoAlias = new Array(); 
 
-    //     for(let i=0; i< nombSel.length; i++){
-    //         let item; 
-    //         //console.log(nombSel[i].alias);
-    //         let alias = nombSel[i].alias;
-    //         nuevoAlias.push(alias);
-           
-    //     }
-    //     console.log(nuevoAlias.toString());
-    //     let aliasString = (nuevoAlias.toString());
-    //     return aliasString;
-    // }
-    // nombrePers();
-    
     const selectPers = personas.filter(persona => persona.id === persona_id)
     let nuevoAlias = []; 
-
          for(let i=0; i< selectPers.length; i++){
              let alias = selectPers[i].alias;
              nuevoAlias.push(alias);
@@ -155,8 +136,7 @@ const Libro = ({libro}) => {
 
     const libroEliminar = id => {
       Swal.fire({
-          title: 'Esta seguro de eliminar este libro?',
-          // text: "la eliminación es !",     
+          title: 'Esta seguro de eliminar este libro?',   
           icon: 'warning',
           showCancelButton: true,
           cancelButtonText: 'Cancelar',

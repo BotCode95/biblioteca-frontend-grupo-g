@@ -57,14 +57,17 @@ a {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 120rem;
+  margin: 0 auto;
 }
 .containerDos {
-  height: 88vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.container-img{
+  width: 60%;
+}
 .columnaUno{
   text-align: center;
 }
@@ -75,19 +78,14 @@ a {
   width:55%;
 }
 .imagen-ingrelibro{
-  width: 60%;
+  width: 40%;
   margin-left: 50px;
   margin-top: 10%;
 }
-.imagen-div{
-  width: 50%;
-  margin-right:300px;
-}
 .imagen-persona{
-  width: 50%;
+  width: 35%;
   
 }
-
 
 .container-layout{
   width: 100%;
