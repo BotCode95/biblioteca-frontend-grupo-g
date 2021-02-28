@@ -8,6 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import { orange } from '@material-ui/core/colors';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -95,12 +96,12 @@ const Persona = ({persona}) => {
                   <td> {persona.alias} </td>
                   <td> {persona.email} </td>
                   <td>
-                      <IconButton aria-label="edit" color="primary">
+                      <IconButton aria-label="edit" style={{ color: orange[900] }}>
                         <EditIcon onClick={() => seleccionarPersona(persona)}/>
                       </IconButton>
                   </td>
                   <td>
-                      <IconButton aria-label="delete" color="secondary"
+                      <IconButton aria-label="delete" style={{ color: orange[900] }}
                           onClick={() => personaEliminar(persona.id)}>
                           <DeleteIcon/>
                       </IconButton>
@@ -108,7 +109,7 @@ const Persona = ({persona}) => {
                       
                   <td>
                       <IconButton aria-label="prestados">
-                      {nuevoLibros.length > 0 ? <MenuBookIcon color="primary" onClick={handleOpen}/>  :  <MenuBookIcon color="disabled"/> }
+                      {nuevoLibros.length > 0 ? <MenuBookIcon style={{ color: orange[900] }} onClick={handleOpen}/>  :  <MenuBookIcon color="disabled"/> }
                       </IconButton>                            
                   </td>
                   <Modal

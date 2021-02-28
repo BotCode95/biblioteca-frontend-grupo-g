@@ -4,6 +4,7 @@ import Categoria from './Categoria'
 import categoriaContext from '../../context/categorias/categoriaContext'
 import libroContext from '../../context/libros/libroContext'
 import alertaContext from '../../context/alertas/alertaContext'
+import imagen from '../../public/static/img/chicalibros.svg'
 
 const ListadoCategoria = () => {
     const categoriasContext = useContext(categoriaContext);
@@ -42,23 +43,29 @@ const ListadoCategoria = () => {
         <div className="alerta-container">
             {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
         </div>
-        <div className="listado-container">
-        <table className="tabla-persona">
-                <thead >
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Eliminar</th>
-                        <th>Libros</th>                        
-                    </tr>
-                </thead>
-                    {categorias.map(categoria => (
-                        <Categoria
-                            key={categoria.id}
-                            categoria = {categoria}
-                        />
-                    ))}
-            </table>           
-        </div>
+        <div className="containerDos">
+            <div className="listado-container">
+                <table className="tabla-persona">
+                    <thead className="tabla-head">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Eliminar</th>
+                            <th>Libros</th>                        
+                        </tr>
+                    </thead>
+                        {categorias.map(categoria => (
+                            <Categoria
+                                key={categoria.id}
+                                categoria = {categoria}
+                            />
+                        ))}
+                </table>           
+            </div>
+        
+            <div>
+                <img className= "imagen-listcat" src={imagen} alt="chicalibros"/>    
+            </div>
+        </div>            
         </>
     )
 }

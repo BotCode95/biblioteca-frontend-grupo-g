@@ -39,7 +39,7 @@ const EditarPersona = () => {
     return ( 
         <Fragment>
             <Layout/>
-            <div className="container">
+            <div className="containerDos">
                 <div className="contenedor-form">
                     <form onSubmit= {handleSubmit}
                         className="form">
