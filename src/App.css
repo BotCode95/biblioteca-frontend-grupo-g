@@ -55,12 +55,44 @@ a {
 .container {
   height: 88vh;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-
+.containerDos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.columnaUno{
+  text-align: center;
+}
+.columnaDos{
+  margin-right: 250px;
+}
+.imagen-listcat{
+  width:200px;
+}
+.imagen-ingrelibro{
+  width: 70%;
+  margin-left: 50px;
+}
 .imagen-div{
-  width: 80%;
+  width: 50%;
+  margin-right:300px;
+}
+.imagen-persona, .imagen-listcat{
+  width: 50%;
+  margin-right: 250px;
+}
+
+.containerDos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 .container-layout{
   width: 100%;
@@ -117,20 +149,20 @@ nav {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color:#D94B18 ;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {background-color: #D98825}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -145,13 +177,15 @@ nav {
 .contenedor-form {
   padding: 3rem;
   max-width: 500px;
-  width: 95%;
+  width: 60%;
   background-color: var(--primary);
   border-radius: 1rem;
-  flex-direction: column;
-  margin: auto;
+  flex-direction: row;
+  margin-left: 200px;
 }
-
+.contenedor-form h1{
+  color:#8C1D04;
+}
 .form{
   display: flex;
   justify-content: start;
@@ -253,7 +287,9 @@ nav {
 }
 .tabla-persona{
   margin:auto;
-  background-color: #edf2f6;
+  padding: 10px;
+  background-color: #ffebb3;
+  border-radius: 5px;
 }
 
 .tabla-head th{  
