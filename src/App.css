@@ -116,7 +116,7 @@ a {
 }
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
 }
 .title{
@@ -139,6 +139,7 @@ nav {
 .dropdown {
   position: relative;
   display: inline-block;
+  margin: auto 12rem auto 12rem;
 }
 
 .dropdown-content {
