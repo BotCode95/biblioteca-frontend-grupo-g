@@ -55,16 +55,16 @@ a {
 .container {
   height: 88vh;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 .containerDos {
+  height: 88vh;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
+
 .columnaUno{
   text-align: center;
 }
@@ -85,7 +85,7 @@ a {
 }
 .imagen-persona{
   width: 50%;
-  margin-right: 250px;
+  
 }
 
 
@@ -176,8 +176,8 @@ nav {
   width: 60%;
   background-color: var(--primary);
   border-radius: 1rem;
-  flex-direction: row;
-  margin-left: 300px;
+  
+  
 }
 .contenedor-form h1{
   color:#8C1D04;
