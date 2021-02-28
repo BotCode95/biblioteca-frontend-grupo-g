@@ -10,6 +10,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import PublishIcon from '@material-ui/icons/Publish';
 import { green } from '@material-ui/core/colors';
+import { orange } from '@material-ui/core/colors';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -202,19 +203,19 @@ const Libro = ({libro}) => {
             <td> {nuevoCat} </td>
             <td> {nuevoAlias} </td>
             <td>
-              <IconButton aria-label="edit" color="primary">
+              <IconButton aria-label="edit" style={{ color: orange[900] }}>
                   <EditIcon onClick={() => seleccionarLibro(libro)}/>
               </IconButton>
             </td>
             <td>
-              <IconButton aria-label="delete" color="secondary"
+              <IconButton aria-label="delete" style={{ color: orange[900] }}
                   onClick={() => libroEliminar(libro.id)}>
                   <DeleteIcon/>
               </IconButton>
             </td>
             <td>
               <IconButton aria-label="prestar" >
-                {nuevoAlias.length > 0 ? <PublishIcon color="disabled"/> : <PublishIcon color="primary" onClick={handleOpen}/>}
+                {nuevoAlias.length > 0 ? <PublishIcon color="disabled"/> : <PublishIcon style={{ color: orange[900] }} onClick={handleOpen}/>}
                   {/* <PublishIcon/> */}
               </IconButton>
               <Modal
@@ -228,7 +229,7 @@ const Libro = ({libro}) => {
             </td>
             <td>
               <IconButton aria-label="devolver">
-              {nuevoAlias.length > 0 ? <GetAppIcon style={{ color: green[500] }} onClick={() => libroDevolver(libro.id)}/>  :  <GetAppIcon color="disabled"/> }
+              {nuevoAlias.length > 0 ? <GetAppIcon style={{ color: orange[900] }} onClick={() => libroDevolver(libro.id)}/>  :  <GetAppIcon color="disabled"/> }
                   {/* <GetAppIcon /> */}
               </IconButton>
             </td>  

@@ -32,8 +32,8 @@ const ListadoPersona = () => {
                 {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
             </div>
         </div>
-            <table className="tabla-persona">
-                <thead >
+            <table className="tabla-persona"> 
+                <thead className="tabla-head" >
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>

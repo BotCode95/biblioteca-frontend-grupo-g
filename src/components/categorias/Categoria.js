@@ -6,6 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import { orange } from '@material-ui/core/colors';
 
 
 function rand() {
@@ -87,14 +88,14 @@ const Categoria = ({categoria}) => {
             <tr>
               <td className="cat"> {categoria.nombre} </td>
               <td className="item-container">
-                  <IconButton aria-label="delete" color="secondary"
+                  <IconButton aria-label="delete" style={{ color: orange[900] }}
                       onClick={() => categoriaEliminar(categoria.id)}>
                       <DeleteIcon/>
                   </IconButton>
               </td>
               <td>
                   <IconButton aria-label="prestados">
-                  {nuevoLibros.length > 0 ? <MenuBookIcon color="primary" onClick={handleOpen}/> : <MenuBookIcon color="disabled"/> }
+                  {nuevoLibros.length > 0 ? <MenuBookIcon style={{ color: orange[900] }} onClick={handleOpen}/> : <MenuBookIcon color="disabled"/> }
                   </IconButton>                            
               </td>
                 <Modal

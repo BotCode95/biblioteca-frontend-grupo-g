@@ -4,6 +4,7 @@ import Layout from '../../components/layout/Layout'
 import libroContext from '../../context/libros/libroContext';
 import categoriaContext from '../../context/categorias/categoriaContext'
 import personaContext from '../../context/personas/personaContext'
+import imagen from '../../public/static/img/ingresalibro.svg'
 
 const NuevoLibro = () => {
     const history = useHistory();
@@ -125,7 +126,10 @@ const NuevoLibro = () => {
                             />
                         </div>  
                     </form>    
-                </div>    
+                </div> 
+                <div>
+                    <img className="imagen-ingrelibro" src={imagen} alt="ingreselibro"/>                
+                </div>   
             </div>    
         </Fragment>
      );

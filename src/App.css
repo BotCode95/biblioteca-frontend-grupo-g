@@ -72,7 +72,7 @@ a {
   margin-right: 250px;
 }
 .imagen-listcat{
-  width:200px;
+  width:55%;
 }
 .imagen-ingrelibro{
   width: 70%;
@@ -82,18 +82,12 @@ a {
   width: 50%;
   margin-right:300px;
 }
-.imagen-persona, .imagen-listcat{
+.imagen-persona{
   width: 50%;
   margin-right: 250px;
 }
 
-.containerDos{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-}
 .container-layout{
   width: 100%;
   height: 100px;
@@ -222,6 +216,7 @@ nav {
 .listado-container{
   width: 600px;
   margin: 0 auto;
+  margin-left: 400px;
 }
 
 .listado {

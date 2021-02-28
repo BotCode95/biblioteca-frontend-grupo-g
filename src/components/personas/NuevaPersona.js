@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext } from 'react'
 import {useHistory} from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 import personaContext from '../../context/personas/personaContext';
+import imagen from '../../public/static/img/ingresepersona.svg'
 
 const NuevaPersona = () => {
     const history = useHistory();
@@ -93,7 +94,10 @@ const NuevaPersona = () => {
                             />
                         </div>  
                     </form>    
-                </div>    
+                </div> 
+                <div>
+                    <img className="imagen-persona" src= {imagen} alt="ingresepersona"/>
+                </div>   
             </div>    
         </Fragment>
      );
