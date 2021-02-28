@@ -1,8 +1,15 @@
 import React, {useReducer} from 'react'
 import personaContext from './personaContext'
 import personaReducer from './personaReducer'
-import {AGREGAR_PERSONA, OBTENER_PERSONAS, 
-    PERSONA_ACTUAL, ELIMINAR_PERSONA, ERROR_PERSONA, ACTUALIZAR_PERSONA, PERSONA_SIN_DATOS} from '../../types'
+import {
+    AGREGAR_PERSONA,
+    OBTENER_PERSONAS, 
+    PERSONA_ACTUAL, 
+    ELIMINAR_PERSONA, 
+    ERROR_PERSONA, 
+    ACTUALIZAR_PERSONA, 
+    PERSONA_SIN_DATOS
+} from '../../types'
 
 import clienteAxios from '../../config/axios'
 
@@ -24,6 +31,14 @@ const PersonaState = (props) => {
                 payload: persona
             })
         } catch (error) {
+            const alerta = {
+                mensaje: error.response.data.Error,
+                tipo: 'error'
+            }
+            dispatch({
+                type: ERROR_PERSONA,
+                payload: alerta
+            })
             console.log(error);
         }
     }

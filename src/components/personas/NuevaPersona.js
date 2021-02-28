@@ -1,13 +1,18 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 import {useHistory} from 'react-router-dom'
 import Layout from '../../components/layout/Layout'
 import personaContext from '../../context/personas/personaContext';
+import alertaContext from '../../context/alertas/alertaContext'
 import imagen from '../../public/static/img/ingresepersona.svg'
 
 const NuevaPersona = () => {
     const history = useHistory();
+
     const personasContext = useContext(personaContext);
-    const {agregarPersona} = personasContext;
+    const {mensaje, agregarPersona} = personasContext;
+
+    const alertas = useContext(alertaContext);
+    const {alerta,mostrarAlerta} = alertas; 
 
     const [persona, setPersonas ] = useState({
         nombre:"",
@@ -17,6 +22,12 @@ const NuevaPersona = () => {
     });
    
     const { nombre, apellido, alias, email } = persona;
+
+    useEffect(() => {
+        if(mensaje){
+            mostrarAlerta(mensaje.mensaje, mensaje.tipo)
+        }
+    }, [mensaje])
     
      const actualizarState = e =>{
         setPersonas({
@@ -28,9 +39,10 @@ const NuevaPersona = () => {
     const handleSubmit = e =>{
        e.preventDefault();
        agregarPersona(persona);
-       
-       history.push('/listado-persona');
-       //Reiniciar el form
+
+       if(nombre.length > 0) {
+        history.push('/listado-persona');
+        }
        setPersonas({
         nombre:"",
         apellido:"",
@@ -93,11 +105,10 @@ const NuevaPersona = () => {
                                 value ="Guardar"
                             />
                         </div>  
+                        {alerta ? (<div className={`alerta ${alerta.tipo}`}>{alerta.mensaje}</div>) : null}
                     </form>    
                 </div> 
-                <div>
                     <img className="imagen-persona" src= {imagen} alt="ingresepersona"/>
-                </div>   
             </div>    
         </Fragment>
      );

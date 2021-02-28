@@ -74,7 +74,6 @@ const NuevaCategoria = () => {
                 <img 
                     src={imagen}
                     alt="question"
-                    className="imagen-div"
                     />
             </div>
         </div>
