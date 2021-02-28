@@ -4,7 +4,7 @@ import Layout from '../../components/layout/Layout'
 import libroContext from '../../context/libros/libroContext';
 import categoriaContext from '../../context/categorias/categoriaContext'
 import personaContext from '../../context/personas/personaContext'
-import imagen from '../../public/static/img/ingresalibro.svg'
+import imagen from '../../public/static/img/chicaleyendo.svg'
 
 const NuevoLibro = () => {
     const history = useHistory();
